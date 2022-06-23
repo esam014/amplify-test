@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import NavigationButton from "./NavigationButton/NavigationButton";
-import PageList from "../pageList";
 import "./NavigationBar.css";
 
 function NavigationBar (props)

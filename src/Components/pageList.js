@@ -3,7 +3,6 @@ import HomePage from "../HomePage";
 import ProfilePage from "../ProfilePage";
 import NutritionPage from "../NutritionPage";
 import CommunicationPage from "../CommunicationPage";
-import TestPage from "../TestPage";
 
 
 function PageList()
