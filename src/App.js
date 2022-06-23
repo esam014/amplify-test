@@ -18,24 +18,15 @@ function App() {
       <BrowserRouter>
         <div className="App">
         <NavigationBar PageList={PageList()} />
-        {/* <h1>NavBar</h1> */}
           <header className="App-header">
             <div className='Content'>
               <Switch>
                 {PageList().map((page) =>
                 {
-                  return <Route exact path={page.path}>{page.Component}</Route>
+                  return <Route exact path={page.path} key={page.key}>{page.Component}</Route>
                 })}
-                {/* <Route path='/'>
-                  <HomePage />
-                </Route> */}
               </Switch>
             </div>
-          {/* <NavigationBar Titles={PageList().map((page) => {
-            return page.Title;
-          })} />
-
-          {PageList()[PageIndex].Component} */}
           </header>
         </div>
       </BrowserRouter>

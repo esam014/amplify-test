@@ -9,7 +9,7 @@ function NavigationBar (props)
         <div className="navbar">
             {props.PageList.map((page) =>
             {
-                return <NavigationButton Page={page} />
+                return <NavigationButton Page={page} key ={page.key}/>
             })}
         </div>
     )
