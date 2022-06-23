@@ -1,0 +1,12 @@
+.navButton {
+    height: 50px;
+    padding: 1rem;
+}
+.Link {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+.hoverLink {
+    text-decoration: underline;
+}
