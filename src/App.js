@@ -11,8 +11,6 @@ import ReactDom from 'react-dom/client'
 import { BrowserRouter,Route, Switch } from 'react-router-dom';
 
 function App() {
-  
-    const [PageIndex, setPageIndex] = useState(4);
 
     return (
       <BrowserRouter>
