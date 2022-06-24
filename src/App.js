@@ -22,7 +22,7 @@ function App({ signOut, user }) {
     <>
       <BrowserRouter>
         <div className="App">
-        <NavigationBar PageList={PageList()} />
+        <NavigationBar PageList={PageList()} signOut={signOut} />
           <header className="App-header">
             <div className='Content'>
               <Switch>
@@ -35,7 +35,6 @@ function App({ signOut, user }) {
           </header>
         </div>
       </BrowserRouter>
-      <button onClick={signOut}>Sign out</button>
     </>
   );
 }

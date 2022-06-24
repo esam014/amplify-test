@@ -10,6 +10,8 @@ function NavigationBar (props)
             {
                 return <NavigationButton Page={page} key ={page.key}/>
             })}
+            
+            <button className="SignOutBtn" onClick={props.signOut}>Sign out</button>
         </div>
     )
 }
