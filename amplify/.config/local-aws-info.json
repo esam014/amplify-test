@@ -1,0 +1,10 @@
+{
+  "staging": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "esam"
+  },
+  "dev": {
+    "configLevel": "amplifyAdmin"
+  }
+}
