@@ -1,18 +1,21 @@
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";
 import Goal from "./Components/HomePage/Goal/Goal";
 import Progress from "./Components/HomePage/Progress/Progress";
-
+import Calendar from "react-calendar";
+import "./HomePage.css";
+import Spacer from "./Components/Spacer";
 function HomePage ()
 {
-    const Title = "Home Page";
-    
     return (
         <div>
             <h1>HomePage</h1>
 
             <Goal />
-
+                <Spacer />
             <Progress />
+                <Spacer />
+            <Calendar className="Calendar"/>
+                <Spacer />
         </div>
     )
 }

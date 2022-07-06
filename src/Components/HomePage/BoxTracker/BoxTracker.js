@@ -5,7 +5,6 @@ function BoxTracker (props)
 {
     return <div className="BoxTracker">
         <h1 className="Type">{props.Type}</h1>
-
         <h3>{props.Date}</h3>
 
         <ul>
