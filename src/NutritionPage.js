@@ -2,8 +2,6 @@ import React from "react";
 
 function NutritionPage ()
 {
-    const Title = "Nutrition Page";
-
     return(
         <div>
             <h1>Nutrition Page</h1>

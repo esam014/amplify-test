@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Goal from "./Components/HomePage/Goal/Goal";
 import Progress from "./Components/HomePage/Progress/Progress";
 import Calendar from "react-calendar";
-import "./HomePage.css";
+import "./Components/HomePage/HomePage.css";
 import Spacer from "./Components/Spacer";
 function HomePage ()
 {
