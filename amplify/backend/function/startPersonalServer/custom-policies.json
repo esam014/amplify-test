@@ -1,0 +1,10 @@
+[
+  {
+    "Action": ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"],
+    "Resource": ["arn:aws:logs:*:*:*"]
+  },
+  {
+    "Action": ["ec2:Start*", "ec2:Stop*"],
+    "Resource": ["*"]
+  }
+]
