@@ -1,0 +1,9 @@
+.MessageContainer {
+    border-style: solid;
+    background-color: white;
+}
+
+.Title {
+    border-style: solid;
+    background-color: grey;
+}
