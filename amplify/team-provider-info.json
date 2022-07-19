@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "amplifytest": {}
+      },
+      "function": {
+        "startPersonalServer": {
+          "deploymentBucketName": "amplify-amplify6cee6783ed934-staging-181250-deployment",
+          "s3Key": "amplify-builds/startPersonalServer-5a426d7059344a34622b-build.zip"
+        }
       }
     }
   }

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/servers": {
+      "name": "/servers",
+      "lambdaFunction": "startPersonalServer",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -32,5 +32,21 @@
       "service": "Lambda",
       "dependsOn": []
     }
+  },
+  "api": {
+    "ec2api": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "startPersonalServer",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    }
   }
 }
