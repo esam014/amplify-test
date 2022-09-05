@@ -1,4 +1,6 @@
 import React from "react";
+import "./LineChart.css";
+
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -34,20 +36,20 @@ export const options = {
     },
   };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['January', 'February', 'March'];
 
 export const data = {
     labels,
     datasets: [
         {
         label: 'Dataset 1',
-        data: [100, 20, 50, 30, 200, 16, 25],
+        data: [100, 20, 50],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
         },
         {
         label: 'Dataset 2',
-        data: [72, 63, 99, 42,85, 200, 16],
+        data: [72, 63, 99],
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
         },
@@ -56,7 +58,7 @@ export const data = {
 
 function LineChart(props)
 {
-    return <div>
+    return <div className="chart">
             <Line options={options} data={data} />
         </div>
 }
