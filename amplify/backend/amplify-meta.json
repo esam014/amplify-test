@@ -36,11 +36,6 @@
           "EMAIL"
         ]
       },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytest-dev-110722-deployment/amplify-cfn-templates/auth/amplifytest-cloudformation-template.json",
-        "logicalId": "authamplifytest"
-      },
-      "lastPushTimeStamp": "2022-06-29T15:13:30.575Z",
       "output": {
         "UserPoolId": "us-east-2_9db2h4ceL",
         "AppClientIDWeb": "5q2jjns7lq8psg78ip94gt6v0k",
@@ -50,25 +45,73 @@
         "IdentityPoolName": "testAuthIdentityPool__dev",
         "UserPoolName": "amplifytest"
       },
-      "lastPushDirHash": "W471nZ02b9Mw9ye+cGt/mOCuSow="
+      "lastPushTimeStamp": "2022-09-23T00:42:33.903Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytest-dev-110722-deployment/amplify-cfn-templates/auth/amplifytest-cloudformation-template.json",
+        "logicalId": "authamplifytest"
+      }
     }
   },
   "hosting": {
     "S3AndCloudFront": {
       "service": "S3AndCloudFront",
       "providerPlugin": "awscloudformation",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytest-dev-110722-deployment/amplify-cfn-templates/hosting/template.json",
-        "logicalId": "hostingS3AndCloudFront"
-      },
-      "lastPushTimeStamp": "2022-06-29T15:13:30.582Z",
       "output": {
         "S3BucketSecureURL": "https://kfit-dev.s3.amazonaws.com",
         "WebsiteURL": "http://kfit-dev.s3-website.us-east-2.amazonaws.com",
         "Region": "us-east-2",
         "HostingBucketName": "kfit-dev"
       },
-      "lastPushDirHash": "X6sIXv4uPTobIRw+RCmj3jpI990="
+      "lastPushTimeStamp": "2022-09-23T00:42:33.905Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytest-dev-110722-deployment/amplify-cfn-templates/hosting/template.json",
+        "logicalId": "hostingS3AndCloudFront"
+      }
+    }
+  },
+  "api": {
+    "amplifytest": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytest",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authamplifytest"
+              }
+            }
+          ]
+        },
+        "GraphQLAPIIdOutput": "vbdzrogtjnco5cqjnfqxm7cat4",
+        "GraphQLAPIEndpointOutput": "https://gmjwpfmqyjgtzgzwpejn5gppme.appsync-api.us-east-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-tpwi5ywa4rfmbcwh64m6a2xx6m"
+      },
+      "lastPushTimeStamp": "2022-09-23T00:42:33.910Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytest-dev-110722-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiamplifytest"
+      }
     }
   }
 }
