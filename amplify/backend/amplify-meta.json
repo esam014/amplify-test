@@ -45,7 +45,7 @@
         "IdentityPoolName": "testAuthIdentityPool__dev",
         "UserPoolName": "amplifytest"
       },
-      "lastPushTimeStamp": "2022-09-27T00:58:03.940Z",
+      "lastPushTimeStamp": "2022-09-23T00:42:33.903Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytest-dev-110722-deployment/amplify-cfn-templates/auth/amplifytest-cloudformation-template.json",
         "logicalId": "authamplifytest"
@@ -62,7 +62,7 @@
         "Region": "us-east-2",
         "HostingBucketName": "kfit-dev"
       },
-      "lastPushTimeStamp": "2022-09-27T00:58:03.947Z",
+      "lastPushTimeStamp": "2022-09-23T00:42:33.905Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytest-dev-110722-deployment/amplify-cfn-templates/hosting/template.json",
         "logicalId": "hostingS3AndCloudFront"
@@ -107,12 +107,11 @@
         "GraphQLAPIEndpointOutput": "https://gmjwpfmqyjgtzgzwpejn5gppme.appsync-api.us-east-2.amazonaws.com/graphql",
         "GraphQLAPIKeyOutput": "da2-tpwi5ywa4rfmbcwh64m6a2xx6m"
       },
-      "lastPushTimeStamp": "2022-09-27T00:58:32.111Z",
+      "lastPushTimeStamp": "2022-09-23T00:42:33.910Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytest-dev-110722-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiamplifytest"
-      },
-      "lastPushDirHash": "J+sFenarg/+q985Fnueo07t8IRI="
+      }
     }
   }
 }
