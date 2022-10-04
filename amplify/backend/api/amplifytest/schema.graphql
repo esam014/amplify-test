@@ -4,17 +4,16 @@ enum ServiceTier {
   ALL
 }
 
-type Report @model @auth(rules: [{ allow: public }]) {
+type Report @model @auth(rules: [{allow: public}]) {
   id: ID!
   start_date: AWSDate
   end_date: AWSDate
   clientID: ID! @index(name: "byClient")
-  DailyNutritions: [DailyNutrition]
-    @manyToMany(relationName: "ReportDailyNutrition")
+  DailyNutritions: [DailyNutrition] @manyToMany(relationName: "ReportDailyNutrition")
   Measurements: [Measurement] @manyToMany(relationName: "ReportMeasurement")
 }
 
-type Measurement @model @auth(rules: [{ allow: public }]) {
+type Measurement @model @auth(rules: [{allow: public}]) {
   id: ID!
   date: AWSDate
   right_arm: Float
@@ -28,7 +27,7 @@ type Measurement @model @auth(rules: [{ allow: public }]) {
   reports: [Report] @manyToMany(relationName: "ReportMeasurement")
 }
 
-type DailyNutrition @model @auth(rules: [{ allow: public }]) {
+type DailyNutrition @model @auth(rules: [{allow: public}]) {
   id: ID!
   date: AWSDate
   calories: Int
@@ -39,15 +38,14 @@ type DailyNutrition @model @auth(rules: [{ allow: public }]) {
   reports: [Report] @manyToMany(relationName: "ReportDailyNutrition")
 }
 
-type Exercises @model @auth(rules: [{ allow: public }]) {
+type Exercises @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   video: String
-  WodExercises: [WodExercises]
-    @hasMany(indexName: "byExercises", fields: ["id"])
+  WodExercises: [WodExercises] @hasMany(indexName: "byExercises", fields: ["id"])
 }
 
-type WodExercises @model @auth(rules: [{ allow: public }]) {
+type WodExercises @model @auth(rules: [{allow: public}]) {
   id: ID!
   resistance: Float
   reps: Int
@@ -57,7 +55,7 @@ type WodExercises @model @auth(rules: [{ allow: public }]) {
   exercisesID: ID! @index(name: "byExercises")
 }
 
-type Workout @model @auth(rules: [{ allow: public }]) {
+type Workout @model @auth(rules: [{allow: public}]) {
   id: ID!
   warm_up: String
   cool_down: String
@@ -66,7 +64,7 @@ type Workout @model @auth(rules: [{ allow: public }]) {
   WodExercises: [WodExercises] @hasMany(indexName: "byWorkout", fields: ["id"])
 }
 
-type Schedule @model @auth(rules: [{ allow: public }]) {
+type Schedule @model @auth(rules: [{allow: public}]) {
   id: ID!
   date: AWSDate
   completed: Boolean
@@ -74,14 +72,14 @@ type Schedule @model @auth(rules: [{ allow: public }]) {
   workoutID: ID! @index(name: "byWorkout")
 }
 
-type Goal @model @auth(rules: [{ allow: public }]) {
+type Goal @model @auth(rules: [{allow: public}]) {
   id: ID!
   short_term_goal: String
   long_term_goal: String
   Clients: [Client] @hasMany(indexName: "byGoal", fields: ["id"])
 }
 
-type NutritionPlan @model @auth(rules: [{ allow: public }]) {
+type NutritionPlan @model @auth(rules: [{allow: public}]) {
   id: ID!
   calorie_target: Int
   protein_target: Int
@@ -90,7 +88,7 @@ type NutritionPlan @model @auth(rules: [{ allow: public }]) {
   end_date: AWSDate
 }
 
-type Client @model @auth(rules: [{ allow: public }]) {
+type Client @model @auth(rules: [{allow: public}]) {
   id: ID!
   start_date: AWSDate
   account_expiry_date: AWSDate
@@ -107,14 +105,13 @@ type Client @model @auth(rules: [{ allow: public }]) {
   trainerID: ID! @index(name: "byTrainer")
   goalID: ID! @index(name: "byGoal")
   Schedules: [Schedule] @hasMany(indexName: "byClient", fields: ["id"])
-  DailyNutritions: [DailyNutrition]
-    @hasMany(indexName: "byClient", fields: ["id"])
+  DailyNutritions: [DailyNutrition] @hasMany(indexName: "byClient", fields: ["id"])
   Measurements: [Measurement] @hasMany(indexName: "byClient", fields: ["id"])
   Reports: [Report] @hasMany(indexName: "byClient", fields: ["id"])
   NutritionPlan: NutritionPlan @hasOne
 }
 
-type Trainer @model @auth(rules: [{ allow: public }]) {
+type Trainer @model @auth(rules: [{allow: public}]) {
   id: ID!
   Clients: [Client] @hasMany(indexName: "byTrainer", fields: ["id"])
 }
@@ -124,7 +121,7 @@ enum Role {
   CLIENT
 }
 
-type User @model @auth(rules: [{ allow: public }]) {
+type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   username: String
   first_name: String
@@ -135,7 +132,8 @@ type User @model @auth(rules: [{ allow: public }]) {
   Client: Client @hasOne
 }
 
-type Todo @model @auth(rules: [{ allow: owner }]) {
+type Todo @model @auth(rules: [{allow: owner}]) {
   id: ID!
   description: String
 }
+ 

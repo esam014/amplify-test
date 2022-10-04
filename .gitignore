@@ -25,7 +25,7 @@ yarn-error.log*
 .vscode/settings.json
 
 #amplify-do-not-edit-begin
-amplify/\#current-cloud-backend
+amplify/\#current-cloud-backend*
 amplify/.config/local-*
 amplify/logs
 amplify/mock-data
