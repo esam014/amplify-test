@@ -7,11 +7,10 @@ function BoxTracker (props)
         <h1 className="Type">{props.Type}</h1>
         <h3>{props.Date}</h3>
 
-        <ul>
-            <li>{props.Weight}</li>
-            <li>{props.Waiste}</li>
-            <li>{props.Extra}</li>
-        </ul>
+        <h2>Short Term</h2>
+        <h3>{props.ShortGoal}</h3>
+        <h2>Long Term</h2>
+        <h3>{props.LongGoal}</h3>
     </div>
 }
 
