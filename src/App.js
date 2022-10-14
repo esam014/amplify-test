@@ -1,4 +1,4 @@
-import { Amplify } from 'aws-amplify';
+import { Amplify} from 'aws-amplify';
 import logo from './logo.svg';
 import React, {useState, useEffect} from 'react';
 import './App.css';
@@ -14,9 +14,23 @@ import { BrowserRouter,Route, Switch } from 'react-router-dom';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
+import { API } from "aws-amplify";
+import * as mutations from './graphql/mutations';
+
 import awsExports from '../src/aws-exports';
 Amplify.configure(awsExports);
 
+
+// useEffect((()=> {
+//   async function createTodoItem(){
+//   const todoDetails = {
+//     name: 'Todo 1',
+//     description: 'Learn AWS AppSync'
+//   };
+
+//   const newTodo = await API.graphql({ query: mutations.createTodo, variables: {input: todoDetails}});
+
+// }}))
 function App({ signOut, user }) {
   return (
     <>
