@@ -1,13 +1,17 @@
 import React from "react";
 import BoxTracker from "../BoxTracker/BoxTracker";
+import { API } from "aws-amplify";
 import { getGoal } from "../../../graphql/queries";
+import { queries, queryHelpers } from "@testing-library/react";
 
 function Goal ()
 {
 
-    const { data } = getGoal("904dba04-1870-4dbf-a3de-eea7e95ac8b3")
+    const apiData = API.graphql({query: getGoal});
+    const goalData = apiData.data.getGoal.items;
+
     return <div>
-        <BoxTracker Type="Goal" Date="Target Date: mm/dd/yyyy" ShortTermGoal={data.short_term_goal} Waist="##" Extra="___" />
+        <BoxTracker Type="Goal" Date="Target Date: mm/dd/yyyy" ShortTermGoal={ goalData } Waist="##" Extra="___" />
     </div>
 }
 
