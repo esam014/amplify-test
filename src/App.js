@@ -79,4 +79,8 @@ function App({ signOut, user }) {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, 
+  {
+    loginMechanisms: ["email", 'phone_number', 'username'],
+  
+  });
