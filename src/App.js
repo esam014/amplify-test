@@ -1,4 +1,4 @@
-import { Amplify} from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import { createTodo, updateTodo, deleteTodo } from './graphql/mutations'
 import { listTodos } from './graphql/queries'
 import logo from './logo.svg';
@@ -22,7 +22,6 @@ import * as mutations from './graphql/mutations';
 import awsExports from '../src/aws-exports';
 Amplify.configure(awsExports);
 
-
 function App({ signOut, user }) {
 
   useEffect((()=> {
@@ -35,6 +34,29 @@ function App({ signOut, user }) {
     const newNutrition = await API.graphql({ query: mutations.createReportDailyNutrition, variables: {input: NutritionDetails}});
   
   }}))
+
+  const formFields = {
+    signUp: {
+      email: {
+        order:1
+      },
+      family_name: {
+        order: 2
+      },
+      preferred_username: {
+        order: 4
+      },
+      birthdate: {
+        order: 3
+      },
+      password: {
+        order: 5
+      },
+      confirm_password: {
+        order: 6
+      }
+    },
+   }
 
   return (
     <>
