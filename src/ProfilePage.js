@@ -32,7 +32,7 @@ function ProfilePage (props)
         <div>
             <h1>Profile Page</h1>
             <br />
-            <Name Name={"Fname Lname"}/>
+            <Name Name="Fname Lname"/>
             <br />
             <LineChart data={Data} className="chart"/>
             <br />

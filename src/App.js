@@ -25,7 +25,7 @@ Amplify.configure(awsExports);
 function App({ signOut, user }) {
 
   useEffect((()=> {
-    async function createNutritionItem(){
+    async function addUser(){
     const NutritionDetails = {
       name: 'Todo 1',
       description: 'Learn AWS AppSync'
@@ -35,28 +35,7 @@ function App({ signOut, user }) {
   
   }}))
 
-  const formFields = {
-    signUp: {
-      email: {
-        order:1
-      },
-      family_name: {
-        order: 2
-      },
-      preferred_username: {
-        order: 4
-      },
-      birthdate: {
-        order: 3
-      },
-      password: {
-        order: 5
-      },
-      confirm_password: {
-        order: 6
-      }
-    },
-   }
+
 
   return (
     <>
@@ -81,6 +60,6 @@ function App({ signOut, user }) {
 
 export default withAuthenticator(App, 
   {
-    loginMechanisms: ["email", 'phone_number', 'username'],
+    signUpAttributes: ['address', 'birthdate', 'email', 'family_name', 'gender', 'name', 'phone_number']
   
   });
