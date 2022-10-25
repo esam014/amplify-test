@@ -57,4 +57,7 @@ function App({ signOut, user }) {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App,
+  {
+    signUpAttributes: ['address', 'birthdate', 'gender', 'email', 'name', 'phone_number']
+  });
