@@ -8,8 +8,8 @@ function BoxTracker (props)
         <h3>{props.Date}</h3>
 
         <ul>
-            <li>{props.Weight}</li>
-            <li>{props.Waiste}</li>
+            <li>{props.ShortTermGoal}</li>
+            <li>{props.LongTermGoal}</li>
             <li>{props.Extra}</li>
         </ul>
     </div>
