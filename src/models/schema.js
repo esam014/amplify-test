@@ -1311,6 +1311,13 @@ export const schema = {
                         "targetName": "userClientId"
                     }
                 },
+                "sub": {
+                    "name": "sub",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -1609,5 +1616,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.3.1",
-    "version": "6d2c5cc0b43dbd6e5c53d9d68cabf7a2"
+    "version": "d780536e8efdcaea4f4d56ee6f167f02"
 };

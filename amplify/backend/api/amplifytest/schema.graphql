@@ -130,6 +130,7 @@ type User @model @auth(rules: [{allow: public}]) {
   email: String
   Trainer: Trainer @hasOne
   Client: Client @hasOne
+  sub: String
 }
 
 type Todo @model @auth(rules: [{allow: owner}]) {

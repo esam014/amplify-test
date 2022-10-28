@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
 import BoxTracker from "../BoxTracker/BoxTracker";
+import { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
-import { getGoal, listGoals } from "../../../graphql/queries";
-import { queries } from "@testing-library/react";
+import { getClient, getGoal, listUsers } from "../../../graphql/queries";
 
 function Goal ()
 {
     const [datExport, setData ] = useState([]);
     const [anotherData, setAnother] = useState([]);
     useEffect(() => {
-        retrievGoals();
+        retrieveGoals();
     },[]);
     
 
-
-    async function retrievGoals()
+    async function retrieveGoals()
     {
         try {
-            const apiData =  await API.graphql(graphqlOperation(listGoals));
-            const datExport = apiData.data.listGoals.items[1].short_term_goal;
-            const longExport = apiData.data.listGoals.items[1].long_term_goal;
+            const cogUserData = await Auth.currentAuthenticatedUser();
+            const userID = await API.graphql(graphqlOperation(listUsers, {filter: { sub: { eq: cogUserData.username}}}));
+            const clientID = userID.data.listUsers.items[0].userClientId;
+            const clientData = await API.graphql(graphqlOperation(getClient, {id: clientID}));
+            const goalID = clientData.data.getClient.goalID;
+            const apiData =  await API.graphql(graphqlOperation(getGoal, {id: goalID}));
+            const datExport = apiData.data.getGoal.short_term_goal;
+            const longExport = apiData.data.getGoal.long_term_goal;
             setData(datExport);
             setAnother(longExport);
             console.info(longExport); 

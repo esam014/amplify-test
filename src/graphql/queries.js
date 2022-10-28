@@ -909,6 +909,7 @@ export const getUser = /* GraphQL */ `
         _lastChangedAt
         clientNutritionPlanId
       }
+      sub
       createdAt
       updatedAt
       _version
@@ -933,6 +934,7 @@ export const listUsers = /* GraphQL */ `
         last_name
         role
         email
+        sub
         createdAt
         updatedAt
         _version
@@ -966,6 +968,7 @@ export const syncUsers = /* GraphQL */ `
         last_name
         role
         email
+        sub
         createdAt
         updatedAt
         _version
