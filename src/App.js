@@ -1,4 +1,6 @@
 import { Amplify} from 'aws-amplify';
+import { createTodo, updateTodo, deleteTodo } from './graphql/mutations'
+import { listTodos } from './graphql/queries'
 import logo from './logo.svg';
 import React, {useState, useEffect} from 'react';
 import './App.css';
@@ -21,17 +23,19 @@ import awsExports from '../src/aws-exports';
 Amplify.configure(awsExports);
 
 
-// useEffect((()=> {
-//   async function createTodoItem(){
-//   const todoDetails = {
-//     name: 'Todo 1',
-//     description: 'Learn AWS AppSync'
-//   };
-
-//   const newTodo = await API.graphql({ query: mutations.createTodo, variables: {input: todoDetails}});
-
-// }}))
 function App({ signOut, user }) {
+
+  useEffect((()=> {
+    async function createNutritionItem(){
+    const NutritionDetails = {
+      name: 'Todo 1',
+      description: 'Learn AWS AppSync'
+    };
+  
+    const newNutrition = await API.graphql({ query: mutations.createReportDailyNutrition, variables: {input: NutritionDetails}});
+  
+  }}))
+
   return (
     <>
       <BrowserRouter>
