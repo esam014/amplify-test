@@ -16,5 +16,13 @@
         "amplifytest": {}
       }
     }
+  },
+  "addgoals": {
+    "categories": {
+      "auth": {
+        "amplifytest": {}
+      }
+    },
+    "awscloudformation": {}
   }
 }
