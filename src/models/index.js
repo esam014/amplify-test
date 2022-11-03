@@ -8,6 +8,11 @@ const ServiceTier = {
   "ALL": "ALL"
 };
 
+const Gender = {
+  "MALE": "MALE",
+  "FEMALE": "FEMALE"
+};
+
 const Role = {
   "TRAINER": "TRAINER",
   "CLIENT": "CLIENT"
@@ -32,5 +37,6 @@ export {
   ReportDailyNutrition,
   ReportMeasurement,
   ServiceTier,
+  Gender,
   Role
 };

@@ -8,6 +8,11 @@ export enum ServiceTier {
   ALL = "ALL"
 }
 
+export enum Gender {
+  MALE = "MALE",
+  FEMALE = "FEMALE"
+}
+
 export enum Role {
   TRAINER = "TRAINER",
   CLIENT = "CLIENT"
@@ -310,7 +315,7 @@ type EagerClient = {
   readonly onboarded?: boolean | null;
   readonly assessed?: boolean | null;
   readonly age?: number | null;
-  readonly gender?: number | null;
+  readonly gender?: Gender | keyof typeof Gender | null;
   readonly height?: number | null;
   readonly training_frequency?: number | null;
   readonly dietary_restrictions?: string | null;
@@ -336,7 +341,7 @@ type LazyClient = {
   readonly onboarded?: boolean | null;
   readonly assessed?: boolean | null;
   readonly age?: number | null;
-  readonly gender?: number | null;
+  readonly gender?: Gender | keyof typeof Gender | null;
   readonly height?: number | null;
   readonly training_frequency?: number | null;
   readonly dietary_restrictions?: string | null;
