@@ -88,6 +88,11 @@ type NutritionPlan @model @auth(rules: [{allow: public}]) {
   end_date: AWSDate
 }
 
+enum Gender {
+  MALE
+  FEMALE
+}
+
 type Client @model @auth(rules: [{allow: public}]) {
   id: ID!
   start_date: AWSDate
@@ -95,7 +100,7 @@ type Client @model @auth(rules: [{allow: public}]) {
   onboarded: Boolean
   assessed: Boolean
   age: Int
-  gender: Int
+  gender: Gender
   height: Float
   training_frequency: Int
   dietary_restrictions: String

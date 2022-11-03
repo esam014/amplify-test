@@ -884,7 +884,9 @@ export const schema = {
                 "gender": {
                     "name": "gender",
                     "isArray": false,
-                    "type": "Int",
+                    "type": {
+                        "enum": "Gender"
+                    },
                     "isRequired": false,
                     "attributes": []
                 },
@@ -1606,6 +1608,13 @@ export const schema = {
                 "ALL"
             ]
         },
+        "Gender": {
+            "name": "Gender",
+            "values": [
+                "MALE",
+                "FEMALE"
+            ]
+        },
         "Role": {
             "name": "Role",
             "values": [
@@ -1616,5 +1625,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.3.1",
-    "version": "d780536e8efdcaea4f4d56ee6f167f02"
+    "version": "a769f519853c7c0f74d26a6a5744bd93"
 };
