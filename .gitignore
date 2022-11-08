@@ -18,11 +18,15 @@
 .env.test.local
 .env.production.local
 
+*.bkup
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 .vscode/settings.json
+
+.package-lock.json.bkup
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
