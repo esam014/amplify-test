@@ -884,7 +884,9 @@ export const schema = {
                 "gender": {
                     "name": "gender",
                     "isArray": false,
-                    "type": "Int",
+                    "type": {
+                        "enum": "Gender"
+                    },
                     "isRequired": false,
                     "attributes": []
                 },
@@ -1311,6 +1313,13 @@ export const schema = {
                         "targetName": "userClientId"
                     }
                 },
+                "sub": {
+                    "name": "sub",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -1599,6 +1608,13 @@ export const schema = {
                 "ALL"
             ]
         },
+        "Gender": {
+            "name": "Gender",
+            "values": [
+                "MALE",
+                "FEMALE"
+            ]
+        },
         "Role": {
             "name": "Role",
             "values": [
@@ -1608,5 +1624,6 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "6d2c5cc0b43dbd6e5c53d9d68cabf7a2"
+    "codegenVersion": "3.3.1",
+    "version": "a769f519853c7c0f74d26a6a5744bd93"
 };
