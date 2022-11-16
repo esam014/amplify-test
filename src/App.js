@@ -12,6 +12,8 @@ import awsExports from '../src/aws-exports';
 import Spinner from './Spinner';
 import {TrainerRouter, UserRouter} from './Routers';
 import { render } from '@testing-library/react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 Amplify.configure(awsExports);
 
