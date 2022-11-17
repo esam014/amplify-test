@@ -18,12 +18,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 Amplify.configure(awsExports);
 
 
-function App({ signOut, user }) {
+function App({ signOut, user, Type }) {
 
   var [userRole, setUserRole] = useState([]);
   let [loading, setLoading] = useState(true);
   console.info(user);
-
+  console.info(Type);
   useEffect(() => {
     retrieveRole();
   },);
@@ -56,29 +56,12 @@ function App({ signOut, user }) {
       console.info("In the Trainer user branch!")
       return (<TrainerRouter signOut={signOut}/>);
     }
-    
-    
-
-
-  // return (
-  //   <>
-  //     <BrowserRouter>
-  //       <div className="App">
-  //       <NavigationBar PageList={PageList()} signOut={signOut} />
-  //         <header className="App-header">
-  //           <div className='Content'>
-  //             <Switch>
-  //               {PageList().map((page) =>
-  //               {
-  //                 return <Route exact path={page.path} key={page.key}>{page.Component}</Route>
-  //               })}
-  //             </Switch>
-  //           </div>
-  //         </header>
-  //       </div>
-  //     </BrowserRouter>
-  //   </>
-  // );
 }
 
-export default withAuthenticator(App);
+
+//Provide two different versions of sign in page depending on how the user arrives at login (Client vs. Trainer)
+//Looks like avaible attributes are limited by the current version in this project, and setup of Cognito User Pool
+const TrainerApp = withAuthenticator(App,{signUpAttributes:['address', 'email', 'name', 'phone_number'], ...{Type:'TRAINER'}});
+const ClientApp = withAuthenticator(App,{signUpAttributes:['address', 'birthdate','gender', 'email', 'name', 'phone_number']});
+
+export {TrainerApp, ClientApp};
