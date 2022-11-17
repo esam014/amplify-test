@@ -8,7 +8,6 @@ import { TrainerApp, ClientApp } from "./App";
 function UserRouter({ signOut }) {
   return (
     <>
-      <BrowserRouter>
         <div className="App">
           <NavigationBar PageList={PageList()} signOut={signOut} />
           <header className="App-header">
@@ -27,7 +26,6 @@ function UserRouter({ signOut }) {
             </div>
           </header>
         </div>
-      </BrowserRouter>
     </>
   );
 }
@@ -35,7 +33,6 @@ function UserRouter({ signOut }) {
 function TrainerRouter({ signOut }) {
   return (
     <>
-      <BrowserRouter>
         <div className="App">
           <TrainerNavBar
             TrainerPageList={TrainerPageList()}
@@ -55,7 +52,6 @@ function TrainerRouter({ signOut }) {
             </Routes>
           </div>
         </div>
-      </BrowserRouter>
     </>
   );
 }
