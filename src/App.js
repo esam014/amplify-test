@@ -61,7 +61,7 @@ function App({ signOut, user, Type }) {
 
 //Provide two different versions of sign in page depending on how the user arrives at login (Client vs. Trainer)
 //Looks like avaible attributes are limited by the current version in this project, and setup of Cognito User Pool
-const TrainerApp = withAuthenticator(App,{signUpAttributes:['address', 'email', 'name', 'phone_number'], ...{Type:'TRAINER'}});
+const TrainerApp = withAuthenticator(App,{signUpAttributes:['address', 'email', 'name', 'phone_number']});
 const ClientApp = withAuthenticator(App,{signUpAttributes:['address', 'birthdate','gender', 'email', 'name', 'phone_number']});
 
 export {TrainerApp, ClientApp};
