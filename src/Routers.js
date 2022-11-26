@@ -63,8 +63,8 @@ function PublicRouter() {
     <>
       <BrowserRouter>
       <Routes>
-        <Route path="/TrainerGettingStarted" key="TrainerStart" element={<TrainerApp/>} /> 
-        <Route path="/GettingStarted" key="ClientStart" element={<ClientApp/>} />
+        <Route path="/TrainerGettingStarted/*" key="TrainerStart" element={<TrainerApp/>} /> 
+        <Route path="/GettingStarted/*" key="ClientStart" element={<ClientApp/>} />
       </Routes>
       </BrowserRouter>
     </>

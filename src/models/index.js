@@ -18,6 +18,14 @@ const Role = {
   "CLIENT": "CLIENT"
 };
 
+const States = {
+  "FIRSTLOGIN": "FIRSTLOGIN",
+  "REGISTERING": "REGISTERING",
+  "REGISTERED": "REGISTERED",
+  "ACTIVE": "ACTIVE",
+  "SUSPENDED": "SUSPENDED"
+};
+
 const { Report, DailyNutrition, Measurement, Exercises, WodExercises, Workout, Schedule, Goal, Client, NutritionPlan, Trainer, User, Todo, ReportDailyNutrition, ReportMeasurement } = initSchema(schema);
 
 export {
@@ -38,5 +46,6 @@ export {
   ReportMeasurement,
   ServiceTier,
   Gender,
-  Role
+  Role,
+  States
 };

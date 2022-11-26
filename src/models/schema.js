@@ -1317,7 +1317,16 @@ export const schema = {
                     "name": "sub",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "state": {
+                    "name": "state",
+                    "isArray": false,
+                    "type": {
+                        "enum": "States"
+                    },
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -1621,9 +1630,19 @@ export const schema = {
                 "TRAINER",
                 "CLIENT"
             ]
+        },
+        "States": {
+            "name": "States",
+            "values": [
+                "FIRSTLOGIN",
+                "REGISTERING",
+                "REGISTERED",
+                "ACTIVE",
+                "SUSPENDED"
+            ]
         }
     },
     "nonModels": {},
     "codegenVersion": "3.3.1",
-    "version": "a769f519853c7c0f74d26a6a5744bd93"
+    "version": "73ae1ae7a48ede15afb7b7a095ba40d1"
 };

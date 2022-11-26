@@ -18,6 +18,14 @@ export enum Role {
   CLIENT = "CLIENT"
 }
 
+export enum States {
+  FIRSTLOGIN = "FIRSTLOGIN",
+  REGISTERING = "REGISTERING",
+  REGISTERED = "REGISTERED",
+  ACTIVE = "ACTIVE",
+  SUSPENDED = "SUSPENDED"
+}
+
 type ReportMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -423,7 +431,8 @@ type EagerUser = {
   readonly email?: string | null;
   readonly Trainer?: Trainer | null;
   readonly Client?: Client | null;
-  readonly sub?: string | null;
+  readonly sub: string;
+  readonly state: States | keyof typeof States;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly userTrainerId?: string | null;
@@ -439,7 +448,8 @@ type LazyUser = {
   readonly email?: string | null;
   readonly Trainer: AsyncItem<Trainer | undefined>;
   readonly Client: AsyncItem<Client | undefined>;
-  readonly sub?: string | null;
+  readonly sub: string;
+  readonly state: States | keyof typeof States;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly userTrainerId?: string | null;

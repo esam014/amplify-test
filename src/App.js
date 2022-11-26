@@ -1,13 +1,14 @@
-import { Amplify} from 'aws-amplify';
+import { Amplify, Hub} from 'aws-amplify';
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import NavigationBar from './Components/NavigationBar/NavigationBar';
 import PageList from './Components/pageList';
-import { BrowserRouter,Route, Switch } from 'react-router-dom';
+import { BrowserRouter,Route, Switch, useLocation } from 'react-router-dom';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { API, graphqlOperation } from "aws-amplify";
-import { listUsers } from "./graphql/queries";
+import { getUser, listUsers } from "./graphql/queries";
+import { createUser } from './graphql/mutations';
 import awsExports from '../src/aws-exports';
 import Spinner from './Spinner';
 import {TrainerRouter, UserRouter} from './Routers';
@@ -21,9 +22,11 @@ Amplify.configure(awsExports);
 function App({ signOut, user, Type }) {
 
   var [userRole, setUserRole] = useState([]);
-  let [loading, setLoading] = useState(true);
+  var [loading, setLoading] = useState(true);
+  const location = useLocation();
   console.info(user);
   console.info(Type);
+  console.info(location.pathname);
   useEffect(() => {
     retrieveRole();
   },);
@@ -58,10 +61,63 @@ function App({ signOut, user, Type }) {
     }
 }
 
+function TrainerAppWrapper({signOut, user}) {
+  /*
+  This function contains a HOC for App that provides the additional configuration
+  for the trainer version, for use with the withAuthenticator HOC
+  */
+  const Type = 'TRAINER';
+  var [initialized, setInitialized] = useState(false);
+  var [loading, setLoading] = useState(true);
+  console.info(user);
 
+  useEffect(() => {
+    if (!initialized) {
+      initTrainer();
+      console.info('Effect ran')
+    }
+  },[]);
+
+  async function initTrainer(){
+    // Function to initialize the trainer data model
+    const initVals = {
+      id: user.username,
+      sub: user.username,
+      state: "FIRSTLOGIN",
+      role: "TRAINER"
+    }
+    const checkUser = await API.graphql(graphqlOperation(getUser, {id: user.username }))
+    if (checkUser.data.getUser == null) {
+      //User has not been created.
+      const newUser = await API.graphql(graphqlOperation(createUser, {input: initVals}));
+      console.info(newUser.data);
+    }
+    setInitialized(true);
+    setLoading(false);
+  }
+
+  // Display a loading bar until the user role/data is loaded
+  if(loading) {
+    return(
+    <div className="App"><Spinner /></div>
+    );
+  } else {
+    return (
+    <App signOut={signOut} user={user} Type={Type} />
+    );
+  }
+}
+
+function ClientAppWrapper({signOut, user}){
+  const Type = 'CLIENT'
+  console.info(window.location.href)
+  return (
+    <App signOut={signOut} user={user} Type={Type} />
+  );
+}
 //Provide two different versions of sign in page depending on how the user arrives at login (Client vs. Trainer)
 //Looks like avaible attributes are limited by the current version in this project, and setup of Cognito User Pool
-const TrainerApp = withAuthenticator(App,{signUpAttributes:['address', 'email', 'name', 'phone_number']});
-const ClientApp = withAuthenticator(App,{signUpAttributes:['address', 'birthdate','gender', 'email', 'name', 'phone_number']});
+const TrainerApp = withAuthenticator(TrainerAppWrapper,{signUpAttributes:['address', 'email', 'name', 'phone_number', 'custom:firstlogin']});
+const ClientApp = withAuthenticator(ClientAppWrapper,{signUpAttributes:['address', 'birthdate','gender', 'email', 'name', 'phone_number']});
 
 export {TrainerApp, ClientApp};

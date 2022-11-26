@@ -828,6 +828,7 @@ export const onCreateUser = /* GraphQL */ `
         clientNutritionPlanId
       }
       sub
+      state
       createdAt
       updatedAt
       _version
@@ -879,6 +880,7 @@ export const onUpdateUser = /* GraphQL */ `
         clientNutritionPlanId
       }
       sub
+      state
       createdAt
       updatedAt
       _version
@@ -930,6 +932,7 @@ export const onDeleteUser = /* GraphQL */ `
         clientNutritionPlanId
       }
       sub
+      state
       createdAt
       updatedAt
       _version

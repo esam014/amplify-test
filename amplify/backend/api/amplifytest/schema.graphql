@@ -126,6 +126,14 @@ enum Role {
   CLIENT
 }
 
+enum States {
+  FIRSTLOGIN
+  REGISTERING
+  REGISTERED
+  ACTIVE
+  SUSPENDED
+}
+
 type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   username: String
@@ -135,7 +143,8 @@ type User @model @auth(rules: [{allow: public}]) {
   email: String
   Trainer: Trainer @hasOne
   Client: Client @hasOne
-  sub: String
+  sub: String!
+  state: States!
 }
 
 type Todo @model @auth(rules: [{allow: owner}]) {
