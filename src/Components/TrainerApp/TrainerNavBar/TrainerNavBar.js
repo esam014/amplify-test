@@ -16,15 +16,17 @@ function TrainerNavBar(props) {
           <Nav className="me-auto">
             {props.TrainerPageList.map((page) => {
               return (
+                <div key={page.key} >
                 <LinkContainer to={page.path}>
                   <Nav.Item>
                     <Nav.Link eventKey={page.key}>{page.Title}</Nav.Link>
                   </Nav.Item>
                 </LinkContainer>
+                </div>
               );
             })}
           </Nav>
-          <Form inline className="mx-3">
+          <Form className="mx-3">
             <Button variant="outline-secondary" onClick={props.signOut}>
               Sign Out
             </Button>
