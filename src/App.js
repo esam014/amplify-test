@@ -1,8 +1,6 @@
-import { Amplify, Hub} from 'aws-amplify';
+import { Amplify} from 'aws-amplify';
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import NavigationBar from './Components/NavigationBar/NavigationBar';
-import PageList from './Components/pageList';
 import { BrowserRouter,Route, Switch, useLocation } from 'react-router-dom';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
@@ -12,9 +10,7 @@ import { createUser } from './graphql/mutations';
 import awsExports from '../src/aws-exports';
 import Spinner from './Spinner';
 import {TrainerRouter, UserRouter} from './Routers';
-import { render } from '@testing-library/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 Amplify.configure(awsExports);
 
