@@ -11,9 +11,10 @@ function TrainerHomePage ()
         <div>
             <h1>HomePage</h1>
             <Progress />
-            <FirstStep />
+
         </div>
     )
 }
 
 export default TrainerHomePage;
+{/* <FirstStep /> */}
