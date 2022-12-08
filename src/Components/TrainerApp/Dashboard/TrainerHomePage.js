@@ -2,7 +2,7 @@ import React from "react";
 import Goal from "./Goal/Goal";
 import "./TrainerHomePage.css";
 import Progress from "../Registration/Progress";
-import UserDetails from "../Registration/UserDetails";
+import MultiStepForm from "../Registration/MultiStepForm";
 
 
 function TrainerHomePage ()
@@ -10,8 +10,7 @@ function TrainerHomePage ()
     return (
         <div>
             <h1>HomePage</h1>
-            <Progress />
-            <UserDetails />
+            <MultiStepForm />
 
         </div>
     )
