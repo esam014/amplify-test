@@ -4,6 +4,7 @@ import UserDetails from "./UserDetails";
 import AddressDetails from "./AddressDetails";
 import Confirmation from "./Confirmation";
 import Progress from './Progress';
+import AccountDetails from './AccountDetails';
 
 class MultiStepForm extends Component {
     state = {
@@ -56,7 +57,7 @@ class MultiStepForm extends Component {
                 return [
                     <div>
                         <Progress step={step} />
-                        <AddressDetails
+                        <AccountDetails
                             nextStep={this.nextStep}
                             prevStep={this.prevStep}
                             handleChange={this.handleChange}
