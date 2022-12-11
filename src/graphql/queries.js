@@ -693,6 +693,7 @@ export const getClient = /* GraphQL */ `
       service_tier
       trainerID
       goalID
+      platformconfigID
       Schedules {
         nextToken
         startedAt
@@ -754,6 +755,7 @@ export const listClients = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
         createdAt
         updatedAt
         _version
@@ -795,6 +797,7 @@ export const syncClients = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
         createdAt
         updatedAt
         _version
@@ -815,11 +818,28 @@ export const getTrainer = /* GraphQL */ `
         nextToken
         startedAt
       }
+      PlatformConfig {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      trainerPlatformConfigId
     }
   }
 `;
@@ -837,6 +857,7 @@ export const listTrainers = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        trainerPlatformConfigId
       }
       nextToken
       startedAt
@@ -863,6 +884,7 @@ export const syncTrainers = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        trainerPlatformConfigId
       }
       nextToken
       startedAt
@@ -885,6 +907,7 @@ export const getUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        trainerPlatformConfigId
       }
       Client {
         id
@@ -902,6 +925,7 @@ export const getUser = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
         createdAt
         updatedAt
         _version
@@ -911,6 +935,11 @@ export const getUser = /* GraphQL */ `
       }
       sub
       state
+      phone
+      address
+      city
+      addr_state
+      zip
       createdAt
       updatedAt
       _version
@@ -937,6 +966,11 @@ export const listUsers = /* GraphQL */ `
         email
         sub
         state
+        phone
+        address
+        city
+        addr_state
+        zip
         createdAt
         updatedAt
         _version
@@ -972,6 +1006,11 @@ export const syncUsers = /* GraphQL */ `
         email
         sub
         state
+        phone
+        address
+        city
+        addr_state
+        zip
         createdAt
         updatedAt
         _version
@@ -1043,6 +1082,92 @@ export const syncTodos = /* GraphQL */ `
         _deleted
         _lastChangedAt
         owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getPlatformConfig = /* GraphQL */ `
+  query GetPlatformConfig($id: ID!) {
+    getPlatformConfig(id: $id) {
+      id
+      logo_file
+      favicon_file
+      primary_color
+      secondary_color
+      custom_url
+      personal_web_enabled
+      platform_nutrition_enabled
+      platform_trainer_enabled
+      Clients {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listPlatformConfigs = /* GraphQL */ `
+  query ListPlatformConfigs(
+    $filter: ModelPlatformConfigFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPlatformConfigs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncPlatformConfigs = /* GraphQL */ `
+  query SyncPlatformConfigs(
+    $filter: ModelPlatformConfigFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncPlatformConfigs(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
       startedAt

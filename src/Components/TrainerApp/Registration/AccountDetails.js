@@ -1,41 +1,85 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Modal } from 'react-bootstrap';
+import './AccountDetails.css';
 
-const back  = (e) => {
-    e.preventDefault();
-    this.props.prevStep();
-}
-
-const saveAndContinue = (e) => {
-    e.preventDefault();
-    this.props.nextStep();
+const Handlers = (props) => {
+  const back = (e) => {
+    // e.preventDefault();
+    props.prevStep();
+  }
+  
+  const fakeCheckout = (props) => {
+    <Modal.Dialog>
+      <Modal.Header closeButton>
+        <Modal.Title>Fake Checkout</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>Fake Chekcout Strip integration</p>
+      </Modal.Body>
+      <Modal.Footer>
+        </Modal.Footer>
+    </Modal.Dialog>
+  }
+  const saveAndContinue = (e) => {
+    // e.preventDefault();
+    props.nextStep();
+  };
+return(
+  <Row>
+    <Col>
+<button id="checkout-and-portal-button" type="submit" onClick={(event) => back({event, props})}>
+  Back
+</button>
+</Col>
+<Col>
+<p id="checkout-and-portal-button">
+  Checkout
+</p>
+</Col>
+<Col>
+<button id="checkout-and-portal-button" type="submit" onClick={(event) => saveAndContinue({event, props})}>
+  Next
+</button>
+</Col>
+</Row>
+)
 };
 
-const ProductDisplay = () => (
-  <section>
-    <div className="product">
-      <Logo />
-      <div className="description">
-        <h3>Starter plan</h3>
-        <h5>$20.00 / month</h5>
+
+const ProductDisplay = (props) => (
+  <Container className="uniqueBody">
+    <section id="uniqueSection">
+      <div className="product">
+        <Logo />
+        <div className="description">
+          <h3 id="specialh3">Starter plan</h3>
+          <h5 id="specialh5">$20.00 / month</h5>
+        </div>
       </div>
-    </div>
-    <form action={saveAndContinue} >
-      {/* Add a hidden field with the lookup_key of your Price */}
-      <input type="hidden" name="lookup_key" value="{{PRICE_LOOKUP_KEY}}" />
-      <button id="checkout-and-portal-button" type="submit">
-        Checkout
-      </button>
-    </form>
-  </section>
+      <form >
+        {/* Add a hidden field with the lookup_key of your Price */}
+        {/* <input type="hidden" name="lookup_key" value="{{PRICE_LOOKUP_KEY}}" /> */}
+        {/* <button id="checkout-and-portal-button" type="submit" onClick={(event) => saveAndContinue({event, props})}>
+          Checkout
+        </button> */}
+        <Handlers 
+              nextStep={props.nextStep}
+              prevStep={props.prevStep}
+              handleChange={props.handleChange}
+              inputValues={props.inputValues}
+              />
+      </form>
+    </section>
+  </Container>
 );
 
 const SuccessDisplay = ({ sessionId }) => {
   return (
-    <section>
+    <section id="uniqueSection">
       <div className="product Box-root">
         <Logo />
         <div className="description Box-root">
-          <h3>Subscription to starter plan successful!</h3>
+          <h3 id="specialh3">Subscription to starter plan successful!</h3>
         </div>
       </div>
       <form action="/create-portal-session" method="POST">
@@ -54,12 +98,12 @@ const SuccessDisplay = ({ sessionId }) => {
 };
 
 const Message = ({ message }) => (
-  <section>
-    <p>{message}</p>
+  <section id="specialSection">
+    <p id="specialP">{message}</p>
   </section>
 );
 
-export default function AccountDetails() {
+export default function AccountDetails(props) {
   let [message, setMessage] = useState('');
   let [success, setSuccess] = useState(false);
   let [sessionId, setSessionId] = useState('');
@@ -82,7 +126,12 @@ export default function AccountDetails() {
   }, [sessionId]);
 
   if (!success && message === '') {
-    return <ProductDisplay />;
+    return <ProductDisplay
+      nextStep={props.nextStep}
+      prevStep={props.prevStep}
+      handleChange={props.handleChange}
+      inputValues={props.inputValues}
+    />;
   } else if (success && sessionId !== '') {
     return <SuccessDisplay sessionId={sessionId} />;
   } else {

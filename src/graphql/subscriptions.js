@@ -589,6 +589,7 @@ export const onCreateClient = /* GraphQL */ `
       service_tier
       trainerID
       goalID
+      platformconfigID
       Schedules {
         nextToken
         startedAt
@@ -645,6 +646,7 @@ export const onUpdateClient = /* GraphQL */ `
       service_tier
       trainerID
       goalID
+      platformconfigID
       Schedules {
         nextToken
         startedAt
@@ -701,6 +703,7 @@ export const onDeleteClient = /* GraphQL */ `
       service_tier
       trainerID
       goalID
+      platformconfigID
       Schedules {
         nextToken
         startedAt
@@ -747,11 +750,28 @@ export const onCreateTrainer = /* GraphQL */ `
         nextToken
         startedAt
       }
+      PlatformConfig {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      trainerPlatformConfigId
     }
   }
 `;
@@ -763,11 +783,28 @@ export const onUpdateTrainer = /* GraphQL */ `
         nextToken
         startedAt
       }
+      PlatformConfig {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      trainerPlatformConfigId
     }
   }
 `;
@@ -779,11 +816,28 @@ export const onDeleteTrainer = /* GraphQL */ `
         nextToken
         startedAt
       }
+      PlatformConfig {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      trainerPlatformConfigId
     }
   }
 `;
@@ -803,6 +857,7 @@ export const onCreateUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        trainerPlatformConfigId
       }
       Client {
         id
@@ -820,6 +875,7 @@ export const onCreateUser = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
         createdAt
         updatedAt
         _version
@@ -829,6 +885,11 @@ export const onCreateUser = /* GraphQL */ `
       }
       sub
       state
+      phone
+      address
+      city
+      addr_state
+      zip
       createdAt
       updatedAt
       _version
@@ -855,6 +916,7 @@ export const onUpdateUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        trainerPlatformConfigId
       }
       Client {
         id
@@ -872,6 +934,7 @@ export const onUpdateUser = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
         createdAt
         updatedAt
         _version
@@ -881,6 +944,11 @@ export const onUpdateUser = /* GraphQL */ `
       }
       sub
       state
+      phone
+      address
+      city
+      addr_state
+      zip
       createdAt
       updatedAt
       _version
@@ -907,6 +975,7 @@ export const onDeleteUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        trainerPlatformConfigId
       }
       Client {
         id
@@ -924,6 +993,7 @@ export const onDeleteUser = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
         createdAt
         updatedAt
         _version
@@ -933,6 +1003,11 @@ export const onDeleteUser = /* GraphQL */ `
       }
       sub
       state
+      phone
+      address
+      city
+      addr_state
+      zip
       createdAt
       updatedAt
       _version
@@ -991,6 +1066,84 @@ export const onDeleteTodo = /* GraphQL */ `
       _deleted
       _lastChangedAt
       owner
+    }
+  }
+`;
+export const onCreatePlatformConfig = /* GraphQL */ `
+  subscription OnCreatePlatformConfig(
+    $filter: ModelSubscriptionPlatformConfigFilterInput
+  ) {
+    onCreatePlatformConfig(filter: $filter) {
+      id
+      logo_file
+      favicon_file
+      primary_color
+      secondary_color
+      custom_url
+      personal_web_enabled
+      platform_nutrition_enabled
+      platform_trainer_enabled
+      Clients {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdatePlatformConfig = /* GraphQL */ `
+  subscription OnUpdatePlatformConfig(
+    $filter: ModelSubscriptionPlatformConfigFilterInput
+  ) {
+    onUpdatePlatformConfig(filter: $filter) {
+      id
+      logo_file
+      favicon_file
+      primary_color
+      secondary_color
+      custom_url
+      personal_web_enabled
+      platform_nutrition_enabled
+      platform_trainer_enabled
+      Clients {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeletePlatformConfig = /* GraphQL */ `
+  subscription OnDeletePlatformConfig(
+    $filter: ModelSubscriptionPlatformConfigFilterInput
+  ) {
+    onDeletePlatformConfig(filter: $filter) {
+      id
+      logo_file
+      favicon_file
+      primary_color
+      secondary_color
+      custom_url
+      personal_web_enabled
+      platform_nutrition_enabled
+      platform_trainer_enabled
+      Clients {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

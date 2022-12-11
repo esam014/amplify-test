@@ -184,7 +184,7 @@ class UserDetails extends Component {
               type="submit"
               className="mt-3"
               variant="dark"
-            //onClick={this.saveAndContinue}
+              // onClick={this.saveAndContinue}
             >
               Next
             </Button>

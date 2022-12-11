@@ -643,6 +643,7 @@ export const createClient = /* GraphQL */ `
       service_tier
       trainerID
       goalID
+      platformconfigID
       Schedules {
         nextToken
         startedAt
@@ -702,6 +703,7 @@ export const updateClient = /* GraphQL */ `
       service_tier
       trainerID
       goalID
+      platformconfigID
       Schedules {
         nextToken
         startedAt
@@ -761,6 +763,7 @@ export const deleteClient = /* GraphQL */ `
       service_tier
       trainerID
       goalID
+      platformconfigID
       Schedules {
         nextToken
         startedAt
@@ -810,11 +813,28 @@ export const createTrainer = /* GraphQL */ `
         nextToken
         startedAt
       }
+      PlatformConfig {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      trainerPlatformConfigId
     }
   }
 `;
@@ -829,11 +849,28 @@ export const updateTrainer = /* GraphQL */ `
         nextToken
         startedAt
       }
+      PlatformConfig {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      trainerPlatformConfigId
     }
   }
 `;
@@ -848,11 +885,28 @@ export const deleteTrainer = /* GraphQL */ `
         nextToken
         startedAt
       }
+      PlatformConfig {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      trainerPlatformConfigId
     }
   }
 `;
@@ -875,6 +929,7 @@ export const createUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        trainerPlatformConfigId
       }
       Client {
         id
@@ -892,6 +947,7 @@ export const createUser = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
         createdAt
         updatedAt
         _version
@@ -901,6 +957,11 @@ export const createUser = /* GraphQL */ `
       }
       sub
       state
+      phone
+      address
+      city
+      addr_state
+      zip
       createdAt
       updatedAt
       _version
@@ -930,6 +991,7 @@ export const updateUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        trainerPlatformConfigId
       }
       Client {
         id
@@ -947,6 +1009,7 @@ export const updateUser = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
         createdAt
         updatedAt
         _version
@@ -956,6 +1019,11 @@ export const updateUser = /* GraphQL */ `
       }
       sub
       state
+      phone
+      address
+      city
+      addr_state
+      zip
       createdAt
       updatedAt
       _version
@@ -985,6 +1053,7 @@ export const deleteUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        trainerPlatformConfigId
       }
       Client {
         id
@@ -1002,6 +1071,7 @@ export const deleteUser = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
         createdAt
         updatedAt
         _version
@@ -1011,6 +1081,11 @@ export const deleteUser = /* GraphQL */ `
       }
       sub
       state
+      phone
+      address
+      city
+      addr_state
+      zip
       createdAt
       updatedAt
       _version
@@ -1069,6 +1144,87 @@ export const deleteTodo = /* GraphQL */ `
       _deleted
       _lastChangedAt
       owner
+    }
+  }
+`;
+export const createPlatformConfig = /* GraphQL */ `
+  mutation CreatePlatformConfig(
+    $input: CreatePlatformConfigInput!
+    $condition: ModelPlatformConfigConditionInput
+  ) {
+    createPlatformConfig(input: $input, condition: $condition) {
+      id
+      logo_file
+      favicon_file
+      primary_color
+      secondary_color
+      custom_url
+      personal_web_enabled
+      platform_nutrition_enabled
+      platform_trainer_enabled
+      Clients {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updatePlatformConfig = /* GraphQL */ `
+  mutation UpdatePlatformConfig(
+    $input: UpdatePlatformConfigInput!
+    $condition: ModelPlatformConfigConditionInput
+  ) {
+    updatePlatformConfig(input: $input, condition: $condition) {
+      id
+      logo_file
+      favicon_file
+      primary_color
+      secondary_color
+      custom_url
+      personal_web_enabled
+      platform_nutrition_enabled
+      platform_trainer_enabled
+      Clients {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deletePlatformConfig = /* GraphQL */ `
+  mutation DeletePlatformConfig(
+    $input: DeletePlatformConfigInput!
+    $condition: ModelPlatformConfigConditionInput
+  ) {
+    deletePlatformConfig(input: $input, condition: $condition) {
+      id
+      logo_file
+      favicon_file
+      primary_color
+      secondary_color
+      custom_url
+      personal_web_enabled
+      platform_nutrition_enabled
+      platform_trainer_enabled
+      Clients {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

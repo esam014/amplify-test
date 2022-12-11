@@ -3,6 +3,7 @@ import NavigationBar from "./Components/NavigationBar/NavigationBar";
 import TrainerNavBar from "./Components/TrainerApp/TrainerNavBar/TrainerNavBar";
 import PageList from "./Components/pageList";
 import TrainerPageList from "./Components/TrainerApp/TrainerPageList";
+import TrainerRegistrationPageList from "./Components/TrainerApp/Registration/TrainerRegistrationPageList";
 import { TrainerApp, ClientApp } from "./App";
 
 function UserRouter({ signOut }) {
@@ -56,6 +57,32 @@ function TrainerRouter({ signOut }) {
   );
 }
 
+function TrainerRegistrationRouter({ signOut }) {
+  return (
+    <>
+        <div className="App">
+          <TrainerNavBar
+            TrainerPageList={TrainerRegistrationPageList()}
+            signOut={signOut}
+          />
+          <div>
+            <Routes>
+              {TrainerRegistrationPageList().map((page) => {
+                return (
+                  <Route
+                    path={page.path}
+                    key={page.key}
+                    element={page.Component}
+                  />
+                );
+              })}
+            </Routes>
+          </div>
+        </div>
+    </>
+  );
+}
+
 function PublicRouter() {
 //Provides a router to use different sign up pages. 
 //TODO: Looks like it might only be usable 
@@ -70,4 +97,4 @@ function PublicRouter() {
     </>
   )
 }
-export { UserRouter, TrainerRouter, PublicRouter };
+export { UserRouter, TrainerRouter, TrainerRegistrationRouter, PublicRouter };

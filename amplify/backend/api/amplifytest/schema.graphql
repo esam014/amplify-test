@@ -109,6 +109,7 @@ type Client @model @auth(rules: [{allow: public}]) {
   service_tier: ServiceTier
   trainerID: ID! @index(name: "byTrainer")
   goalID: ID! @index(name: "byGoal")
+  platformconfigID: ID! @index(name: "byPlatformConfig")
   Schedules: [Schedule] @hasMany(indexName: "byClient", fields: ["id"])
   DailyNutritions: [DailyNutrition] @hasMany(indexName: "byClient", fields: ["id"])
   Measurements: [Measurement] @hasMany(indexName: "byClient", fields: ["id"])
@@ -119,6 +120,7 @@ type Client @model @auth(rules: [{allow: public}]) {
 type Trainer @model @auth(rules: [{allow: public}]) {
   id: ID!
   Clients: [Client] @hasMany(indexName: "byTrainer", fields: ["id"])
+  PlatformConfig: PlatformConfig @hasOne
 }
 
 enum Role {
@@ -145,10 +147,27 @@ type User @model @auth(rules: [{allow: public}]) {
   Client: Client @hasOne
   sub: String!
   state: States!
+  phone: String
+  address: String
+  city: String
+  addr_state: String
+  zip: String
 }
 
 type Todo @model @auth(rules: [{allow: owner}]) {
   id: ID!
   description: String
 }
- 
+
+type PlatformConfig @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  logo_file: String
+  favicon_file: String
+  primary_color: String
+  secondary_color: String
+  custom_url: String
+  personal_web_enabled: Boolean
+  platform_nutrition_enabled: Boolean
+  platform_trainer_enabled: Boolean
+  Clients: [Client] @hasMany(indexName: "byPlatformConfig", fields: ["id"])
+}

@@ -26,7 +26,7 @@ const States = {
   "SUSPENDED": "SUSPENDED"
 };
 
-const { Report, DailyNutrition, Measurement, Exercises, WodExercises, Workout, Schedule, Goal, Client, NutritionPlan, Trainer, User, Todo, ReportDailyNutrition, ReportMeasurement } = initSchema(schema);
+const { Report, DailyNutrition, Measurement, Exercises, WodExercises, Workout, Schedule, Goal, Client, NutritionPlan, Trainer, PlatformConfig, User, Todo, ReportDailyNutrition, ReportMeasurement } = initSchema(schema);
 
 export {
   Report,
@@ -40,6 +40,7 @@ export {
   Client,
   NutritionPlan,
   Trainer,
+  PlatformConfig,
   User,
   Todo,
   ReportDailyNutrition,

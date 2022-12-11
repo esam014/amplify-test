@@ -1,24 +1,49 @@
 /* eslint-disable default-case */
 import React, { Component } from 'react';
 import UserDetails from "./UserDetails";
-import AddressDetails from "./AddressDetails";
-import Confirmation from "./Confirmation";
 import Progress from './Progress';
 import AccountDetails from './AccountDetails';
+import PlatformDetails from './PlatformDetails';
+import { schema } from '../../../models/schema';
+import { API, graphqlOperation } from "aws-amplify";
+import { createPlatformConfig } from '../../../graphql/mutations';
 
+
+async function initStuff () {
+    const initConfig = await API.graphql(graphqlOperation(createPlatformConfig));
+}
 class MultiStepForm extends Component {
-    state = {
-        step: 1,
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        address: '',
-        city: '',
-        state: '',
-        zip: '',
+    constructor(props) {
+        super(props)
+        this.state = {
+            step: 1,
+            user: schema.models.user,
+            platformConfigs: schema.models.platformConfigs,
+            // User Details
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            address: '',
+            city: '',
+            state: '',
+            zip: '',
+            // Platform details
+            logoFile: '',
+            faviconFile: '',
+            primaryColor: '#254AA2',
+            secondaryColor: '#E19614',
+            customUrl: '',
+            persWebEnabled: false,
+            platformNutrition: false,
+            platformTrainer: false,
+        }
     }
 
+    componentDidMount = () => {
+        this.setState({user: this.props.user})
+        initStuff();
+    }
     nextStep = () => {
         const { step } = this.state
         this.setState({
@@ -34,17 +59,25 @@ class MultiStepForm extends Component {
     }
 
     handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value })
+
+        if (event.target.type === "checkbox") {
+            this.setState({ [event.target.id]: event.target.checked });
+        } else {
+            this.setState({ [event.target.name]: event.target.value })
+        }
+
     }
 
+
+
     render() {
-        const { step, firstName, lastName, email, phone, address, city, state, zip } = this.state;
-        const inputValues = { firstName, lastName, email, phone, address, city, state, zip };
+        const { step, user, platformConfigs, firstName, lastName, email, phone, address, city, state, zip, logoFile, faviconFile, primaryColor, secondaryColor, customUrl, persWebEnabled, platformNutrition, platformTrainer } = this.state;
+        const inputValues = {user, platformConfigs, firstName, lastName, email, phone, address, city, state, zip, logoFile, faviconFile, primaryColor, secondaryColor, customUrl, persWebEnabled, platformNutrition, platformTrainer };
         <Progress />
         switch (step) {
             case 1:
                 return [
-                    <div>
+                    <div key="registrationUser">
                         <Progress step={step} />
                         <UserDetails
                             nextStep={this.nextStep}
@@ -55,7 +88,7 @@ class MultiStepForm extends Component {
                 ]
             case 2:
                 return [
-                    <div>
+                    <div key="registrationAccount">
                         <Progress step={step} />
                         <AccountDetails
                             nextStep={this.nextStep}
@@ -66,11 +99,12 @@ class MultiStepForm extends Component {
                     </div>]
             case 3:
                 return [
-                    <div>
+                    <div key="registrationPlatform">
                         <Progress step={step} />
-                        <Confirmation
+                        <PlatformDetails
                             nextStep={this.nextStep}
                             prevStep={this.prevStep}
+                            handleChange={this.handleChange}
                             inputValues={inputValues}
                         />
                     </div>]

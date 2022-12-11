@@ -9,16 +9,16 @@ import { getUser, listUsers } from "./graphql/queries";
 import { createUser } from './graphql/mutations';
 import awsExports from '../src/aws-exports';
 import Spinner from './Spinner';
-import {TrainerRouter, UserRouter} from './Routers';
+import {TrainerRouter, UserRouter, TrainerRegistrationRouter} from './Routers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 Amplify.configure(awsExports);
 
 
 function App({ signOut, user, Type }) {
-
   var [userRole, setUserRole] = useState([]);
   var [loading, setLoading] = useState(true);
+  var [userState, setUserState] = useState();
   const location = useLocation();
   console.info(user);
   console.info(Type);
@@ -30,11 +30,14 @@ function App({ signOut, user, Type }) {
   async function retrieveRole()
     {
         try {
-            const userID = await API.graphql(graphqlOperation(listUsers, {filter: { sub: { eq: user.username}}}));
-            const userRole = userID.data.listUsers.items[0].role;
+            const userID = await (await API.graphql(graphqlOperation(getUser, {id: user.username }))).data.getUser;
+            const userRole = userID.role;
+            const userState = userID.state;
             setUserRole(userRole);
+            setUserState(userState);
             setLoading(false);
             console.info(userRole);       
+            console.info(userState);       
         } catch (error) {
             console.error("Failure retrieving Role!", error)
         }
@@ -45,15 +48,24 @@ function App({ signOut, user, Type }) {
       <div className="App"><Spinner /></div>
       );
     }
-    else if (userRole === 'CLIENT') {
+    else if (userRole === 'CLIENT' && userState === 'ACTIVE') {
       // Return the "Client" version of the App
       console.info("In the Client user branch!")
       return (<UserRouter signOut={signOut}/>);
     }
-    else if (userRole === 'TRAINER'){
+    else if (userRole === 'TRAINER' && userState === 'ACTIVE'){
       // Return the "Trainer" version of the App
       console.info("In the Trainer user branch!")
       return (<TrainerRouter signOut={signOut}/>);
+    }
+    else if (userRole === 'CLIENT'){
+      return(
+        <div className="App"><Spinner /></div>
+      )
+    }
+    else if (userRole === 'TRAINER'){
+      console.info("In the Trainer registration branch!")
+      return (<TrainerRegistrationRouter signOut={signOut} user={user}/>);
     }
 }
 
