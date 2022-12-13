@@ -7,7 +7,7 @@ import { Button } from "react-bootstrap";
 
 function TrainerNavBar(props) {
   return (
-    <>
+    <div>
       <Navbar bg="dark" variant="dark">
         <Container>
           <LinkContainer to="/">
@@ -33,7 +33,7 @@ function TrainerNavBar(props) {
           </Form>
         </Container>
       </Navbar>
-    </>
+    </div>
   );
 }
 
