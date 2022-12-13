@@ -1,5 +1,8 @@
+import userEvent from "@testing-library/user-event";
+import { API, graphqlOperation } from "aws-amplify";
 import React, { Component } from "react";
 import { Form, Button, Col, Container, Row } from "react-bootstrap";
+import { updateUser } from "../../../graphql/mutations";
 
 class UserDetails extends Component {
   constructor(props) {
@@ -12,12 +15,29 @@ class UserDetails extends Component {
     this.props.prevStep();
   };
 
+  async something () {
+    var update = {
+      id: this.props.inputValues.user.id,
+      first_name: this.props.inputValues.firstName,
+      last_name: this.props.inputValues.lastName,
+      phone: this.props.inputValues.phone,
+      address: this.props.inputValues.address,
+      city: this.props.inputValues.city,
+      addr_state: this.props.inputValues.addr_state,
+      zip: this.props.inputValues.zip,
+    }
+    var resp = await API.graphql(graphqlOperation(updateUser, {input: update}));
+    console.info(resp);
+  }
+   
   saveAndContinue = (e) => {
     if (e.currentTarget.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
       console.info("Invalid entries!");
     } else {
+      // this.props.inputValues.user.first_name = this.props.firstName;
+      this.something();
       this.props.nextStep();
     }
     this.setState({ validated: true });
@@ -108,7 +128,7 @@ class UserDetails extends Component {
                 <Form.Control
                   as="select"
                   name="state"
-                  defaultValue={this.props.inputValues.state}
+                  defaultValue={this.props.inputValues.addr_state}
                   onChange={this.props.handleChange}
                 >
                   <option value="AL">Alabama</option>

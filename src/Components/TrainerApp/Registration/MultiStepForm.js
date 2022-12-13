@@ -8,17 +8,13 @@ import { schema } from '../../../models/schema';
 import { API, graphqlOperation } from "aws-amplify";
 import { createPlatformConfig } from '../../../graphql/mutations';
 
-
-async function initStuff () {
-    const initConfig = await API.graphql(graphqlOperation(createPlatformConfig));
-}
 class MultiStepForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
             step: 1,
-            user: schema.models.user,
-            platformConfigs: schema.models.platformConfigs,
+            user: this.props.user,
+            platformConfig: this.props.platformConfig,
             // User Details
             firstName: '',
             lastName: '',
@@ -26,7 +22,7 @@ class MultiStepForm extends Component {
             phone: '',
             address: '',
             city: '',
-            state: '',
+            addr_state: '',
             zip: '',
             // Platform details
             logoFile: '',
@@ -40,10 +36,10 @@ class MultiStepForm extends Component {
         }
     }
 
-    componentDidMount = () => {
-        this.setState({user: this.props.user})
-        initStuff();
-    }
+    // componentDidMount = () => {
+    //     // this.setState({user: this.props.user})
+    //     initStuff();
+    // }
     nextStep = () => {
         const { step } = this.state
         this.setState({
@@ -71,8 +67,8 @@ class MultiStepForm extends Component {
 
 
     render() {
-        const { step, user, platformConfigs, firstName, lastName, email, phone, address, city, state, zip, logoFile, faviconFile, primaryColor, secondaryColor, customUrl, persWebEnabled, platformNutrition, platformTrainer } = this.state;
-        const inputValues = {user, platformConfigs, firstName, lastName, email, phone, address, city, state, zip, logoFile, faviconFile, primaryColor, secondaryColor, customUrl, persWebEnabled, platformNutrition, platformTrainer };
+        const { step, user, platformConfig, firstName, lastName, email, phone, address, city, addr_state, zip, logoFile, faviconFile, primaryColor, secondaryColor, customUrl, persWebEnabled, platformNutrition, platformTrainer } = this.state;
+        const inputValues = {user, platformConfig, firstName, lastName, email, phone, address, city, addr_state, zip, logoFile, faviconFile, primaryColor, secondaryColor, customUrl, persWebEnabled, platformNutrition, platformTrainer };
         <Progress />
         switch (step) {
             case 1:
