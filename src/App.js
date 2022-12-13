@@ -42,7 +42,7 @@ function App({ signOut, user, Type }) {
             console.error("Failure retrieving Role!", error)
         }
     }
-    // Display a loading bar until the user role/data is loaded
+    //  Display a loading bar until the user role/data is loaded
     if(loading) {
       return(
       <div className="App"><Spinner /></div>
