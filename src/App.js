@@ -97,22 +97,22 @@ function TrainerAppWrapper({signOut, user}) {
       lifecycle: "FIRSTLOGIN",
       role: "TRAINER"
     }
-    try {
+    // try {
       const checkUser = (await API.graphql(graphqlOperation(listUsers, {filter: {id: {eq: user.username} } }))).data.listUsers;
-      console.info(checkUser)  
-    } catch (error) {
-      // console.info(checkUser)
-      if (error.data.listUsers.items[0] === null ) {
-        const newUser = await API.graphql(graphqlOperation(createUser, {input: initVals}));
-        console.info(newUser.data);
-      }
-    }
-    
-    // if (checkUser.length === 0) {
-    //   //User has not been created.
-    //   const newUser = await API.graphql(graphqlOperation(createUser, {input: initVals}));
-    //   console.info(newUser.data);
+    //   console.info(checkUser)  
+    // } catch (error) {
+    //   // console.info(checkUser)
+    //   if (error.data.listUsers.items[0] === null ) {
+    //     const newUser = await API.graphql(graphqlOperation(createUser, {input: initVals}));
+    //     console.info(newUser.data);
+    //   }
     // }
+    
+    if (checkUser.length === 0) {
+      //User has not been created.
+      const newUser = await API.graphql(graphqlOperation(createUser, {input: initVals}));
+      console.info(newUser.data);
+    }
     setInitialized(true);
     setLoading(false);
   }
