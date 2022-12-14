@@ -32,7 +32,7 @@ function App({ signOut, user, Type }) {
         try {
             const userID = await (await API.graphql(graphqlOperation(getUser, {id: user.username }))).data.getUser;
             const userRole = userID.role;
-            const userState = userID.state;
+            const userState = userID.lifecycle;
             setUserRole(userRole);
             setUserState(userState);
             setLoading(false);
@@ -60,7 +60,10 @@ function App({ signOut, user, Type }) {
     }
     else if (userRole === 'CLIENT'){
       return(
-        <div className="App"><Spinner /></div>
+        <div className="App">
+          {/* <Spinner /> */}
+          <UserRouter signOut={signOut}/>
+          </div>
       )
     }
     else if (userRole === 'TRAINER'){
@@ -152,6 +155,7 @@ function ClientAppWrapper({signOut, user}){
       role: "CLIENT"
     }
     const checkUser = await API.graphql(graphqlOperation(getUser, {id: user.username }))
+    console.log(checkUser);
     if (checkUser.data.getUser == null) {
       //User has not been created.
       const newUser = await API.graphql(graphqlOperation(createUser, {input: initVals}));
