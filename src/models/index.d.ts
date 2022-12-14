@@ -478,7 +478,7 @@ type EagerUser = {
   readonly Trainer?: Trainer | null;
   readonly Client?: Client | null;
   readonly sub: string;
-  readonly lifecycle: Lifecycle | keyof typeof Lifecycle;
+  readonly lifecycle?: Lifecycle | keyof typeof Lifecycle | null;
   readonly phone?: string | null;
   readonly address?: string | null;
   readonly city?: string | null;
@@ -500,7 +500,7 @@ type LazyUser = {
   readonly Trainer: AsyncItem<Trainer | undefined>;
   readonly Client: AsyncItem<Client | undefined>;
   readonly sub: string;
-  readonly lifecycle: Lifecycle | keyof typeof Lifecycle;
+  readonly lifecycle?: Lifecycle | keyof typeof Lifecycle | null;
   readonly phone?: string | null;
   readonly address?: string | null;
   readonly city?: string | null;

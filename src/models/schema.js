@@ -1485,7 +1485,7 @@ export const schema = {
                     "type": {
                         "enum": "Lifecycle"
                     },
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "phone": {
@@ -1837,6 +1837,6 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "codegenVersion": "3.3.2",
-    "version": "35794883336207201f253e0955357c2a"
+    "codegenVersion": "3.3.1",
+    "version": "692de679020882795ee1edb83666bc75"
 };
