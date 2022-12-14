@@ -18,7 +18,7 @@ export enum Role {
   CLIENT = "CLIENT"
 }
 
-export enum States {
+export enum Lifecycle {
   FIRSTLOGIN = "FIRSTLOGIN",
   REGISTERING = "REGISTERING",
   REGISTERED = "REGISTERED",
@@ -478,11 +478,11 @@ type EagerUser = {
   readonly Trainer?: Trainer | null;
   readonly Client?: Client | null;
   readonly sub: string;
-  readonly state: States | keyof typeof States;
+  readonly lifecycle: Lifecycle | keyof typeof Lifecycle;
   readonly phone?: string | null;
   readonly address?: string | null;
   readonly city?: string | null;
-  readonly addr_state?: string | null;
+  readonly usstate?: string | null;
   readonly zip?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -500,11 +500,11 @@ type LazyUser = {
   readonly Trainer: AsyncItem<Trainer | undefined>;
   readonly Client: AsyncItem<Client | undefined>;
   readonly sub: string;
-  readonly state: States | keyof typeof States;
+  readonly lifecycle: Lifecycle | keyof typeof Lifecycle;
   readonly phone?: string | null;
   readonly address?: string | null;
   readonly city?: string | null;
-  readonly addr_state?: string | null;
+  readonly usstate?: string | null;
   readonly zip?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;

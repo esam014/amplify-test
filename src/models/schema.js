@@ -1479,11 +1479,11 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "state": {
-                    "name": "state",
+                "lifecycle": {
+                    "name": "lifecycle",
                     "isArray": false,
                     "type": {
-                        "enum": "States"
+                        "enum": "Lifecycle"
                     },
                     "isRequired": true,
                     "attributes": []
@@ -1509,8 +1509,8 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "addr_state": {
-                    "name": "addr_state",
+                "usstate": {
+                    "name": "usstate",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -1825,8 +1825,8 @@ export const schema = {
                 "CLIENT"
             ]
         },
-        "States": {
-            "name": "States",
+        "Lifecycle": {
+            "name": "Lifecycle",
             "values": [
                 "FIRSTLOGIN",
                 "REGISTERING",
@@ -1838,5 +1838,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.3.1",
-    "version": "35794883336207201f253e0955357c2a"
+    "version": "0c3e06d6a38499f72b59349093e1836d"
 };

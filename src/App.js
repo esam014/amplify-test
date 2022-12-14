@@ -91,7 +91,7 @@ function TrainerAppWrapper({signOut, user}) {
     const initVals = {
       id: user.username,
       sub: user.username,
-      state: "FIRSTLOGIN",
+      lifecycle: "FIRSTLOGIN",
       role: "TRAINER"
     }
     const checkUser = await API.graphql(graphqlOperation(getUser, {id: user.username }))
@@ -138,7 +138,7 @@ function ClientAppWrapper({signOut, user}){
     const initVals = {
       id: user.username,
       sub: user.username,
-      state: "FIRSTLOGIN",
+      lifecycle: "FIRSTLOGIN",
       role: "CLIENT"
     }
     const checkUser = await API.graphql(graphqlOperation(getUser, {id: user.username }))

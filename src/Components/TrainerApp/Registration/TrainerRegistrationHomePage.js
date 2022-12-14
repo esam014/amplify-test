@@ -31,9 +31,9 @@ function TrainerRegistrationHomePage() {
                 trainer = (await API.graphql(graphqlOperation(createTrainer, {input: {}}))).data.createTrainer;
                 platformConfig = (await API.graphql(graphqlOperation(createPlatformConfig, {input: {}}))).data.createPlatformConfig;
                 user.userTrainerId = trainer.id;
-                const possStates = schema.enums.States.values[1];
+                const possStates = schema.enums.Lifecycle.values[1];
                 console.info(possStates);
-                var resp = await API.graphql(graphqlOperation(updateUser, {input: {id: user.id, userTrainerId: user.userTrainerId, email: info.attributes.email, state: schema.enums.States.values[1]}}));
+                var resp = await API.graphql(graphqlOperation(updateUser, {input: {id: user.id, userTrainerId: user.userTrainerId, email: info.attributes.email, Lifecycle: possStates}}));
                 await API.graphql(graphqlOperation(updateTrainer, {input: {id: trainer.id, trainerPlatformConfigId: platformConfig.id}}));
                 console.info(resp);
             } else {
@@ -54,8 +54,8 @@ function TrainerRegistrationHomePage() {
             <div><Spinner /></div>
         )
     }
-    else if (user.state === 'FIRSTLOGIN') {
-        console.info(user.state);
+    else if (user.Lifecycle === 'FIRSTLOGIN') {
+        console.info(user.Lifecycle);
         if (show) {
             return (
                 <div>
@@ -78,8 +78,8 @@ function TrainerRegistrationHomePage() {
                 </div>
             );
         }
-    } else if (user.state === 'REGISTERING') {
-        console.info(user.state)
+    } else if (user.Lifecycle === 'REGISTERING') {
+        console.info(user.Lifecycle)
         return (
             <div>
                 <h1>Welcome Back!</h1>

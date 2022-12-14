@@ -18,7 +18,7 @@ const Role = {
   "CLIENT": "CLIENT"
 };
 
-const States = {
+const Lifecycle = {
   "FIRSTLOGIN": "FIRSTLOGIN",
   "REGISTERING": "REGISTERING",
   "REGISTERED": "REGISTERED",
@@ -48,5 +48,5 @@ export {
   ServiceTier,
   Gender,
   Role,
-  States
+  Lifecycle
 };

@@ -128,7 +128,7 @@ enum Role {
   CLIENT
 }
 
-enum States {
+enum lifecycle {
   FIRSTLOGIN
   REGISTERING
   REGISTERED
@@ -146,11 +146,11 @@ type User @model @auth(rules: [{allow: public}]) {
   Trainer: Trainer @hasOne
   Client: Client @hasOne
   sub: String!
-  state: States!
+  lifecycle: lifecycle!
   phone: String
   address: String
   city: String
-  addr_state: String
+  usstate: String
   zip: String
 }
 

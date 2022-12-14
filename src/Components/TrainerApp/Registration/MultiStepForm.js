@@ -22,7 +22,7 @@ class MultiStepForm extends Component {
             phone: '',
             address: '',
             city: '',
-            addr_state: '',
+            usstate: '',
             zip: '',
             // Platform details
             logoFile: '',
@@ -67,8 +67,8 @@ class MultiStepForm extends Component {
 
 
     render() {
-        const { step, user, platformConfig, firstName, lastName, email, phone, address, city, addr_state, zip, logoFile, faviconFile, primaryColor, secondaryColor, customUrl, persWebEnabled, platformNutrition, platformTrainer } = this.state;
-        const inputValues = {user, platformConfig, firstName, lastName, email, phone, address, city, addr_state, zip, logoFile, faviconFile, primaryColor, secondaryColor, customUrl, persWebEnabled, platformNutrition, platformTrainer };
+        const { step, user, platformConfig, firstName, lastName, email, phone, address, city, usstate, zip, logoFile, faviconFile, primaryColor, secondaryColor, customUrl, persWebEnabled, platformNutrition, platformTrainer } = this.state;
+        const inputValues = {user, platformConfig, firstName, lastName, email, phone, address, city, usstate, zip, logoFile, faviconFile, primaryColor, secondaryColor, customUrl, persWebEnabled, platformNutrition, platformTrainer };
         <Progress />
         switch (step) {
             case 1:
