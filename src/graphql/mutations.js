@@ -956,11 +956,11 @@ export const createUser = /* GraphQL */ `
         clientNutritionPlanId
       }
       sub
-      state
+      lifecycle
       phone
       address
       city
-      addr_state
+      usstate
       zip
       createdAt
       updatedAt
@@ -1018,11 +1018,11 @@ export const updateUser = /* GraphQL */ `
         clientNutritionPlanId
       }
       sub
-      state
+      lifecycle
       phone
       address
       city
-      addr_state
+      usstate
       zip
       createdAt
       updatedAt
@@ -1080,11 +1080,11 @@ export const deleteUser = /* GraphQL */ `
         clientNutritionPlanId
       }
       sub
-      state
+      lifecycle
       phone
       address
       city
-      addr_state
+      usstate
       zip
       createdAt
       updatedAt

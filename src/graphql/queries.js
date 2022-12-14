@@ -934,11 +934,11 @@ export const getUser = /* GraphQL */ `
         clientNutritionPlanId
       }
       sub
-      state
+      lifecycle
       phone
       address
       city
-      addr_state
+      usstate
       zip
       createdAt
       updatedAt
@@ -965,11 +965,11 @@ export const listUsers = /* GraphQL */ `
         role
         email
         sub
-        state
+        lifecycle
         phone
         address
         city
-        addr_state
+        usstate
         zip
         createdAt
         updatedAt
@@ -1005,11 +1005,11 @@ export const syncUsers = /* GraphQL */ `
         role
         email
         sub
-        state
+        lifecycle
         phone
         address
         city
-        addr_state
+        usstate
         zip
         createdAt
         updatedAt

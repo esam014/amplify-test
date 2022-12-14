@@ -32,7 +32,7 @@ function App({ signOut, user, Type }) {
         try {
             const userID = await (await API.graphql(graphqlOperation(getUser, {id: user.username }))).data.getUser;
             const userRole = userID.role;
-            const userState = userID.state;
+            const userState = userID.lifecycle;
             setUserRole(userRole);
             setUserState(userState);
             setLoading(false);
@@ -60,7 +60,10 @@ function App({ signOut, user, Type }) {
     }
     else if (userRole === 'CLIENT'){
       return(
-        <div className="App"><Spinner /></div>
+        <div className="App">
+          {/* <Spinner /> */}
+          <UserRouter signOut={signOut}/>
+          </div>
       )
     }
     else if (userRole === 'TRAINER'){
@@ -91,15 +94,25 @@ function TrainerAppWrapper({signOut, user}) {
     const initVals = {
       id: user.username,
       sub: user.username,
-      state: "FIRSTLOGIN",
+      lifecycle: "FIRSTLOGIN",
       role: "TRAINER"
     }
-    const checkUser = await API.graphql(graphqlOperation(getUser, {id: user.username }))
-    if (checkUser.data.getUser == null) {
-      //User has not been created.
-      const newUser = await API.graphql(graphqlOperation(createUser, {input: initVals}));
-      console.info(newUser.data);
+    try {
+      const checkUser = (await API.graphql(graphqlOperation(listUsers, {filter: {id: {eq: user.username} } }))).data.listUsers;
+      console.info(checkUser)  
+    } catch (error) {
+      // console.info(checkUser)
+      if (error.data.listUsers.items[0] === null ) {
+        const newUser = await API.graphql(graphqlOperation(createUser, {input: initVals}));
+        console.info(newUser.data);
+      }
     }
+    
+    // if (checkUser.length === 0) {
+    //   //User has not been created.
+    //   const newUser = await API.graphql(graphqlOperation(createUser, {input: initVals}));
+    //   console.info(newUser.data);
+    // }
     setInitialized(true);
     setLoading(false);
   }
@@ -138,10 +151,11 @@ function ClientAppWrapper({signOut, user}){
     const initVals = {
       id: user.username,
       sub: user.username,
-      state: "FIRSTLOGIN",
+      lifecycle: "FIRSTLOGIN",
       role: "CLIENT"
     }
     const checkUser = await API.graphql(graphqlOperation(getUser, {id: user.username }))
+    console.log(checkUser);
     if (checkUser.data.getUser == null) {
       //User has not been created.
       const newUser = await API.graphql(graphqlOperation(createUser, {input: initVals}));
