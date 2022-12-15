@@ -14,30 +14,15 @@ class UserDetails extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
-
-  async something () {
-    var update = {
-      id: this.props.inputValues.user.id,
-      first_name: this.props.inputValues.firstName,
-      last_name: this.props.inputValues.lastName,
-      phone: this.props.inputValues.phone,
-      address: this.props.inputValues.address,
-      city: this.props.inputValues.city,
-      addr_state: this.props.inputValues.addr_state,
-      zip: this.props.inputValues.zip,
-    }
-    var resp = await API.graphql(graphqlOperation(updateUser, {input: update}));
-    console.info(resp);
-  }
-   
+  
   saveAndContinue = (e) => {
     if (e.currentTarget.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
       console.info("Invalid entries!");
     } else {
-      // this.props.inputValues.user.first_name = this.props.firstName;
-      this.something();
+      // Commit the user changes, then proceed
+      this.props.commit();
       this.props.nextStep();
     }
     this.setState({ validated: true });
@@ -127,8 +112,8 @@ class UserDetails extends Component {
                 </Form.Label>
                 <Form.Control
                   as="select"
-                  name="state"
-                  defaultValue={this.props.inputValues.addr_state}
+                  name="usstate"
+                  defaultValue={this.props.inputValues.usstate}
                   onChange={this.props.handleChange}
                 >
                   <option value="AL">Alabama</option>

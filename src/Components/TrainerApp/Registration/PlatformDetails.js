@@ -10,6 +10,7 @@ class PlatformDetails extends Component {
 
     saveAndContinue = (e) => {
         e.preventDefault();
+        this.props.commit();
         this.props.nextStep();
     };
 
@@ -108,7 +109,7 @@ class PlatformDetails extends Component {
                     <Row>
                         <Form.Group className="my-3">
                             <Button variant="secondary" onClick={this.back}>Back</Button>{' '}
-                            <Button variant="primary">Confirm</Button>
+                            <Button variant="primary" onClick={this.saveAndContinue}>Confirm</Button>
                         </Form.Group>
                     </Row>
                 </Form>

@@ -29,16 +29,15 @@ function TrainerRegistrationHomePage() {
             if (user.Trainer === null) {
                 // Check if the user's associated trainer object has been created, and create if neccessary.
                 trainer = (await API.graphql(graphqlOperation(createTrainer, {input: {}}))).data.createTrainer;
-                platformConfig = (await API.graphql(graphqlOperation(createPlatformConfig, {input: {}}))).data.createPlatformConfig;
+                platformConfig = (await API.graphql(graphqlOperation(createPlatformConfig, {input: {primaryColor: '#254AA2', secondaryColor: '#E19614', }}))).data.createPlatformConfig;
                 user.userTrainerId = trainer.id;
-                const possStates = schema.enums.Lifecycle.values[1];
-                console.info(possStates);
-                var resp = await API.graphql(graphqlOperation(updateUser, {input: {id: user.id, userTrainerId: user.userTrainerId, email: info.attributes.email, Lifecycle: possStates}}));
+                const possStates = schema.enums.Lifecycle.values[1]; //Registering - 2nd lifecycle state
+                var resp = await API.graphql(graphqlOperation(updateUser, {input: {id: user.id, userTrainerId: user.userTrainerId, email: info.attributes.email, lifecycle: possStates}}));
                 await API.graphql(graphqlOperation(updateTrainer, {input: {id: trainer.id, trainerPlatformConfigId: platformConfig.id}}));
                 console.info(resp);
             } else {
                 trainer = (await API.graphql(graphqlOperation(getTrainer, { id: user.userTrainerId }))).data.getTrainer;
-                platformConfig = (await API.graphql(graphqlOperation(getPlatformConfig, {id: trainer.trainerPlatformConfigId }))).data.createPlatformConfig;
+                platformConfig = trainer.PlatformConfig;
             }
             setLoading(false);
             setUser(user);
@@ -54,8 +53,8 @@ function TrainerRegistrationHomePage() {
             <div><Spinner /></div>
         )
     }
-    else if (user.Lifecycle === 'FIRSTLOGIN') {
-        console.info(user.Lifecycle);
+    else if (user.lifecycle === 'FIRSTLOGIN') {
+        console.info(user.lifecycle);
         if (show) {
             return (
                 <div>
@@ -78,8 +77,8 @@ function TrainerRegistrationHomePage() {
                 </div>
             );
         }
-    } else if (user.Lifecycle === 'REGISTERING') {
-        console.info(user.Lifecycle)
+    } else if (user.lifecycle === 'REGISTERING') {
+        console.info(platformConfig)
         return (
             <div>
                 <h1>Welcome Back!</h1>
