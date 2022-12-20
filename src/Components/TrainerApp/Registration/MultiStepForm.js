@@ -7,6 +7,7 @@ import PlatformDetails from './PlatformDetails';
 import { API, graphqlOperation } from "aws-amplify";
 import { updatePlatformConfig, updateUser } from '../../../graphql/mutations';
 import { schema } from '../../../models/schema';
+import {Navigate} from 'react-router-dom';
 
 class MultiStepForm extends Component {
     constructor(props) {
@@ -165,11 +166,11 @@ class MultiStepForm extends Component {
                 this.finalCommit();
                 return [
                     <div key="something made up">
-                        <p>Congrats, you've finished registration. Need to return to home page.</p>
+                        <Navigate to="/TrainerGettingStarted/" replace={true}/>
                     </div>
                 ]
         }
     }
 }
 
-export default MultiStepForm;
+export default MultiStepForm

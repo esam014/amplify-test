@@ -3,7 +3,7 @@ import TrainerRegistrationHomePage from "./TrainerRegistrationHomePage";
 
 function TrainerRegistrationPageList()
 {
-    const TrainerPageList = [
+    const TrainerRegistrationPageList = [
         {
             Title : "Home",
             Component : <TrainerRegistrationHomePage />,
@@ -12,7 +12,7 @@ function TrainerRegistrationPageList()
         }
     ]
 
-    return TrainerPageList
+    return TrainerRegistrationPageList
 }
 
 export default TrainerRegistrationPageList

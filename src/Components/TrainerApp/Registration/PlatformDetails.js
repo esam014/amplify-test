@@ -5,6 +5,7 @@ class PlatformDetails extends Component {
 
     back = (e) => {
         e.preventDefault();
+        this.props.commit();
         this.props.prevStep();
     }
 

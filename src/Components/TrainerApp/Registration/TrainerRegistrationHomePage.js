@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MultiStepForm from "./MultiStepForm";
-import { API, graphqlOperation, input } from "aws-amplify";
-import { getPlatformConfig, getTrainer, getUser } from "../../../graphql/queries";
+import { API, graphqlOperation } from "aws-amplify";
+import { getTrainer, getUser } from "../../../graphql/queries";
 import { schema } from "../../../models/schema";
 import { Auth } from "aws-amplify";
 import { Alert, Spinner } from "react-bootstrap";
@@ -29,12 +29,13 @@ function TrainerRegistrationHomePage() {
             if (user.Trainer === null) {
                 // Check if the user's associated trainer object has been created, and create if neccessary.
                 trainer = (await API.graphql(graphqlOperation(createTrainer, {input: {}}))).data.createTrainer;
-                platformConfig = (await API.graphql(graphqlOperation(createPlatformConfig, {input: {primaryColor: '#254AA2', secondaryColor: '#E19614', }}))).data.createPlatformConfig;
+                const platformInit = { logo_file: "", favicon_file: "", custom_url: "", primary_color: "#254AA2", secondary_color: "#E19614", personal_web_enabled: true, platform_nutrition_enabled: true, platform_trainer_enabled: true }
+                platformConfig = (await API.graphql(graphqlOperation(createPlatformConfig, {input: platformInit}))).data.createPlatformConfig;
                 user.userTrainerId = trainer.id;
                 const possStates = schema.enums.Lifecycle.values[1]; //Registering - 2nd lifecycle state
-                var resp = await API.graphql(graphqlOperation(updateUser, {input: {id: user.id, userTrainerId: user.userTrainerId, email: info.attributes.email, lifecycle: possStates}}));
+                
+                await API.graphql(graphqlOperation(updateUser, {input: {id: user.id, userTrainerId: user.userTrainerId, email: info.attributes.email, lifecycle: possStates}}));
                 await API.graphql(graphqlOperation(updateTrainer, {input: {id: trainer.id, trainerPlatformConfigId: platformConfig.id}}));
-                console.info(resp);
             } else {
                 trainer = (await API.graphql(graphqlOperation(getTrainer, { id: user.userTrainerId }))).data.getTrainer;
                 platformConfig = trainer.PlatformConfig;
@@ -54,7 +55,6 @@ function TrainerRegistrationHomePage() {
         )
     }
     else if (user.lifecycle === 'FIRSTLOGIN') {
-        console.info(user.lifecycle);
         if (show) {
             return (
                 <div>
@@ -78,7 +78,6 @@ function TrainerRegistrationHomePage() {
             );
         }
     } else if (user.lifecycle === 'REGISTERING') {
-        console.info(platformConfig)
         return (
             <div>
                 <h1>Welcome Back!</h1>

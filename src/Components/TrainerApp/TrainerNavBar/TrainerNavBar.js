@@ -10,7 +10,7 @@ function TrainerNavBar(props) {
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <LinkContainer to="/">
+          <LinkContainer to={props.TrainerPageList[0].path}>
             <Navbar.Brand>KFIT</Navbar.Brand>
           </LinkContainer>
           <Nav className="me-auto">

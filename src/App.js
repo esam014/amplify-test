@@ -35,6 +35,7 @@ function App({ signOut, user, Type }) {
       setLoading(false);
       console.info(userRole);
       console.info(userState);
+      console.info(user);
     } catch (error) {
       console.error("Failure retrieving Role!", error)
     }
