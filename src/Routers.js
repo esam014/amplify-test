@@ -1,19 +1,23 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar/NavigationBar";
+import UserNavBar from "./Components/UserApp/UserNavBar/UserNavBar";
 import TrainerNavBar from "./Components/TrainerApp/TrainerNavBar/TrainerNavBar";
-import PageList from "./Components/pageList";
 import TrainerPageList from "./Components/TrainerApp/TrainerPageList";
 import TrainerRegistrationPageList from "./Components/TrainerApp/Registration/TrainerRegistrationPageList";
 import { TrainerApp, ClientApp } from "./App";
+import UserRegistrationPageList from "./Components/UserApp/Registration/UserRegistrationPageList";
+import UserPageList from "./Components/UserApp/UserPageList";
 
 function UserRouter({ signOut }) {
   return (
         <div className="App">
-          <NavigationBar PageList={PageList()} signOut={signOut} />
+          <UserNavBar 
+          UserPageList={UserPageList()} 
+          signOut={signOut} />
           <header className="App-header">
             <div className="Content">
               <Routes>
-                {PageList().map((page) => {
+                {UserPageList().map((page) => {
                   return (
                     <Route
                       path={page.path}
@@ -27,6 +31,29 @@ function UserRouter({ signOut }) {
           </header>
         </div>
   );
+}
+
+function UserRegistrationRouter({ signOut }) {
+  console.log("Routing to user registration router");
+  return <div className="App">
+    <UserNavBar
+      UserPageList={UserRegistrationPageList()}
+      signOut={signOut}
+      />
+    <div>
+      <Routes>
+        {UserRegistrationPageList().map((page) => {
+          return (
+            <Route
+              path={page.path}
+              key={page.key}
+              element={page.Component}
+            />
+          )
+        })}
+      </Routes>
+    </div>
+  </div>
 }
 
 function TrainerRouter({ signOut }) {
@@ -91,4 +118,4 @@ function PublicRouter() {
     </div>
   )
 }
-export { UserRouter, TrainerRouter, TrainerRegistrationRouter, PublicRouter };
+export { UserRouter, TrainerRouter, UserRegistrationRouter, TrainerRegistrationRouter, PublicRouter };

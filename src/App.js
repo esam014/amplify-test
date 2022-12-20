@@ -9,7 +9,7 @@ import { getUser, listUsers } from "./graphql/queries";
 import { createUser } from './graphql/mutations';
 import awsExports from '../src/aws-exports';
 import Spinner from './Spinner';
-import { TrainerRouter, UserRouter, TrainerRegistrationRouter } from './Routers';
+import { TrainerRouter, UserRouter, TrainerRegistrationRouter, UserRegistrationRouter } from './Routers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 Amplify.configure(awsExports);
@@ -59,7 +59,7 @@ function App({ signOut, user, Type }) {
     return (
       <div className="App">
         {/* <Spinner /> */}
-        <UserRouter signOut={signOut} />
+        <UserRegistrationRouter signOut={signOut} />
       </div>
     )
   }
