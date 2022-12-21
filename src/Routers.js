@@ -4,7 +4,7 @@ import TrainerNavBar from "./Components/TrainerApp/TrainerNavBar/TrainerNavBar";
 import PageList from "./Components/pageList";
 import TrainerPageList from "./Components/TrainerApp/TrainerPageList";
 import TrainerRegistrationPageList from "./Components/TrainerApp/Registration/TrainerRegistrationPageList";
-import { TrainerApp, ClientApp } from "./App";
+import { TrainerApp, ClientApp, MainApp } from "./App";
 
 function UserRouter({ signOut }) {
   return (
@@ -86,6 +86,7 @@ function PublicRouter() {
       <Routes>
         <Route path="/TrainerGettingStarted/*" key="TrainerStart" element={<TrainerApp/>} /> 
         <Route path="/GettingStarted/*" key="ClientStart" element={<ClientApp/>} />
+        <Route path="/*" key="Main" element={<MainApp/>} />
       </Routes>
       </BrowserRouter>
     </div>

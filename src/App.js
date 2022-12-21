@@ -1,7 +1,7 @@
 import { Amplify } from 'aws-amplify';
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useLocation, Navigate } from 'react-router-dom';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { API, graphqlOperation } from "aws-amplify";
@@ -54,7 +54,10 @@ function App({ signOut, user, Type }) {
   else if (userRole === 'TRAINER' && userState === 'ACTIVE') {
     // Return the "Trainer" version of the App
     console.info("In the Trainer user branch!")
-    return (<TrainerRouter signOut={signOut} />);
+    return (
+      <div className="App">
+        <TrainerRouter signOut={signOut} />
+      </div>);
   }
   else if (userRole === 'CLIENT') {
     return (
@@ -175,5 +178,6 @@ function ClientAppWrapper({ signOut, user }) {
 //Looks like avaible attributes are limited by the current version in this project, and setup of Cognito User Pool
 const TrainerApp = withAuthenticator(TrainerAppWrapper, { signUpAttributes: ['email', 'phone_number', 'custom:firstlogin'] });
 const ClientApp = withAuthenticator(ClientAppWrapper, { signUpAttributes: ['birthdate', 'email', 'name', 'phone_number'] });
+const MainApp = withAuthenticator(App, { hideSignUp: true });
 
-export { TrainerApp, ClientApp };
+export { TrainerApp, ClientApp, MainApp };
