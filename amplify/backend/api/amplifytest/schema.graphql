@@ -107,14 +107,15 @@ type Client @model @auth(rules: [{allow: public}]) {
   equipment_list: String
   other_physical_activities: String
   service_tier: ServiceTier
-  trainerID: ID! @index(name: "byTrainer")
-  goalID: ID! @index(name: "byGoal")
-  platformconfigID: ID! @index(name: "byPlatformConfig")
+  trainerID: ID @index(name: "byTrainer")
+  goalID: ID @index(name: "byGoal")
+  platformconfigID: ID @index(name: "byPlatformConfig")
   Schedules: [Schedule] @hasMany(indexName: "byClient", fields: ["id"])
   DailyNutritions: [DailyNutrition] @hasMany(indexName: "byClient", fields: ["id"])
   Measurements: [Measurement] @hasMany(indexName: "byClient", fields: ["id"])
   Reports: [Report] @hasMany(indexName: "byClient", fields: ["id"])
   NutritionPlan: NutritionPlan @hasOne
+  birthday: AWSDate
 }
 
 type Trainer @model @auth(rules: [{allow: public}]) {

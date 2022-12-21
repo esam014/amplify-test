@@ -561,6 +561,7 @@ export const createClient = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      birthday
       createdAt
       updatedAt
       clientNutritionPlanId
@@ -611,6 +612,7 @@ export const updateClient = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      birthday
       createdAt
       updatedAt
       clientNutritionPlanId
@@ -661,6 +663,7 @@ export const deleteClient = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      birthday
       createdAt
       updatedAt
       clientNutritionPlanId
@@ -789,6 +792,7 @@ export const createUser = /* GraphQL */ `
         trainerID
         goalID
         platformconfigID
+        birthday
         createdAt
         updatedAt
         clientNutritionPlanId
@@ -842,6 +846,7 @@ export const updateUser = /* GraphQL */ `
         trainerID
         goalID
         platformconfigID
+        birthday
         createdAt
         updatedAt
         clientNutritionPlanId
@@ -895,6 +900,7 @@ export const deleteUser = /* GraphQL */ `
         trainerID
         goalID
         platformconfigID
+        birthday
         createdAt
         updatedAt
         clientNutritionPlanId

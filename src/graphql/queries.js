@@ -371,6 +371,7 @@ export const getClient = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      birthday
       createdAt
       updatedAt
       clientNutritionPlanId
@@ -401,6 +402,7 @@ export const listClients = /* GraphQL */ `
         trainerID
         goalID
         platformconfigID
+        birthday
         createdAt
         updatedAt
         clientNutritionPlanId
@@ -484,6 +486,7 @@ export const getUser = /* GraphQL */ `
         trainerID
         goalID
         platformconfigID
+        birthday
         createdAt
         updatedAt
         clientNutritionPlanId
