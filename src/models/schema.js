@@ -948,6 +948,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "platformconfigID": {
+                    "name": "platformconfigID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "Schedules": {
                     "name": "Schedules",
                     "isArray": true,
@@ -1064,6 +1071,15 @@ export const schema = {
                         "name": "byGoal",
                         "fields": [
                             "goalID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byPlatformConfig",
+                        "fields": [
+                            "platformconfigID"
                         ]
                     }
                 },
@@ -1196,6 +1212,149 @@ export const schema = {
                         "associatedWith": "trainerID"
                     }
                 },
+                "PlatformConfig": {
+                    "name": "PlatformConfig",
+                    "isArray": false,
+                    "type": {
+                        "model": "PlatformConfig"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "HAS_ONE",
+                        "associatedWith": "id",
+                        "targetName": "trainerPlatformConfigId"
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "trainerPlatformConfigId": {
+                    "name": "trainerPlatformConfigId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            },
+            "syncable": true,
+            "pluralName": "Trainers",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "PlatformConfig": {
+            "name": "PlatformConfig",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "logo_file": {
+                    "name": "logo_file",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "favicon_file": {
+                    "name": "favicon_file",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "primary_color": {
+                    "name": "primary_color",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "secondary_color": {
+                    "name": "secondary_color",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "custom_url": {
+                    "name": "custom_url",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "personal_web_enabled": {
+                    "name": "personal_web_enabled",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "platform_nutrition_enabled": {
+                    "name": "platform_nutrition_enabled",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "platform_trainer_enabled": {
+                    "name": "platform_trainer_enabled",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "Clients": {
+                    "name": "Clients",
+                    "isArray": true,
+                    "type": {
+                        "model": "Client"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "platformconfigID"
+                    }
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -1214,7 +1373,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Trainers",
+            "pluralName": "PlatformConfigs",
             "attributes": [
                 {
                     "type": "model",
@@ -1315,6 +1474,50 @@ export const schema = {
                 },
                 "sub": {
                     "name": "sub",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "lifecycle": {
+                    "name": "lifecycle",
+                    "isArray": false,
+                    "type": {
+                        "enum": "Lifecycle"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "phone": {
+                    "name": "phone",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "address": {
+                    "name": "address",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "city": {
+                    "name": "city",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "usstate": {
+                    "name": "usstate",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "zip": {
+                    "name": "zip",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -1621,9 +1824,19 @@ export const schema = {
                 "TRAINER",
                 "CLIENT"
             ]
+        },
+        "Lifecycle": {
+            "name": "Lifecycle",
+            "values": [
+                "FIRSTLOGIN",
+                "REGISTERING",
+                "REGISTERED",
+                "ACTIVE",
+                "SUSPENDED"
+            ]
         }
     },
     "nonModels": {},
     "codegenVersion": "3.3.1",
-    "version": "a769f519853c7c0f74d26a6a5744bd93"
+    "version": "692de679020882795ee1edb83666bc75"
 };

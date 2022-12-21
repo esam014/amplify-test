@@ -13,17 +13,12 @@ export const createReport = /* GraphQL */ `
       clientID
       DailyNutritions {
         nextToken
-        startedAt
       }
       Measurements {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -39,17 +34,12 @@ export const updateReport = /* GraphQL */ `
       clientID
       DailyNutritions {
         nextToken
-        startedAt
       }
       Measurements {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -65,17 +55,12 @@ export const deleteReport = /* GraphQL */ `
       clientID
       DailyNutritions {
         nextToken
-        startedAt
       }
       Measurements {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -97,13 +82,9 @@ export const createMeasurement = /* GraphQL */ `
       clientID
       reports {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -125,13 +106,9 @@ export const updateMeasurement = /* GraphQL */ `
       clientID
       reports {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -153,13 +130,9 @@ export const deleteMeasurement = /* GraphQL */ `
       clientID
       reports {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -178,13 +151,9 @@ export const createDailyNutrition = /* GraphQL */ `
       clientID
       reports {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -203,13 +172,9 @@ export const updateDailyNutrition = /* GraphQL */ `
       clientID
       reports {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -228,13 +193,9 @@ export const deleteDailyNutrition = /* GraphQL */ `
       clientID
       reports {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -249,13 +210,9 @@ export const createExercises = /* GraphQL */ `
       video
       WodExercises {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -270,13 +227,9 @@ export const updateExercises = /* GraphQL */ `
       video
       WodExercises {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -291,13 +244,9 @@ export const deleteExercises = /* GraphQL */ `
       video
       WodExercises {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -316,9 +265,6 @@ export const createWodExercises = /* GraphQL */ `
       exercisesID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -337,9 +283,6 @@ export const updateWodExercises = /* GraphQL */ `
       exercisesID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -358,9 +301,6 @@ export const deleteWodExercises = /* GraphQL */ `
       exercisesID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -376,17 +316,12 @@ export const createWorkout = /* GraphQL */ `
       muscle_group
       Schedules {
         nextToken
-        startedAt
       }
       WodExercises {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -402,17 +337,12 @@ export const updateWorkout = /* GraphQL */ `
       muscle_group
       Schedules {
         nextToken
-        startedAt
       }
       WodExercises {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -428,17 +358,12 @@ export const deleteWorkout = /* GraphQL */ `
       muscle_group
       Schedules {
         nextToken
-        startedAt
       }
       WodExercises {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -455,9 +380,6 @@ export const createSchedule = /* GraphQL */ `
       workoutID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -474,9 +396,6 @@ export const updateSchedule = /* GraphQL */ `
       workoutID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -493,9 +412,6 @@ export const deleteSchedule = /* GraphQL */ `
       workoutID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -510,13 +426,9 @@ export const createGoal = /* GraphQL */ `
       long_term_goal
       Clients {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -531,13 +443,9 @@ export const updateGoal = /* GraphQL */ `
       long_term_goal
       Clients {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -552,13 +460,9 @@ export const deleteGoal = /* GraphQL */ `
       long_term_goal
       Clients {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -576,9 +480,6 @@ export const createNutritionPlan = /* GraphQL */ `
       end_date
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -596,9 +497,6 @@ export const updateNutritionPlan = /* GraphQL */ `
       end_date
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -616,9 +514,6 @@ export const deleteNutritionPlan = /* GraphQL */ `
       end_date
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -643,21 +538,18 @@ export const createClient = /* GraphQL */ `
       service_tier
       trainerID
       goalID
+      platformconfigID
       Schedules {
         nextToken
-        startedAt
       }
       DailyNutritions {
         nextToken
-        startedAt
       }
       Measurements {
         nextToken
-        startedAt
       }
       Reports {
         nextToken
-        startedAt
       }
       NutritionPlan {
         id
@@ -668,15 +560,10 @@ export const createClient = /* GraphQL */ `
         end_date
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
+      birthday
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       clientNutritionPlanId
     }
   }
@@ -702,21 +589,18 @@ export const updateClient = /* GraphQL */ `
       service_tier
       trainerID
       goalID
+      platformconfigID
       Schedules {
         nextToken
-        startedAt
       }
       DailyNutritions {
         nextToken
-        startedAt
       }
       Measurements {
         nextToken
-        startedAt
       }
       Reports {
         nextToken
-        startedAt
       }
       NutritionPlan {
         id
@@ -727,15 +611,10 @@ export const updateClient = /* GraphQL */ `
         end_date
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
+      birthday
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       clientNutritionPlanId
     }
   }
@@ -761,21 +640,18 @@ export const deleteClient = /* GraphQL */ `
       service_tier
       trainerID
       goalID
+      platformconfigID
       Schedules {
         nextToken
-        startedAt
       }
       DailyNutritions {
         nextToken
-        startedAt
       }
       Measurements {
         nextToken
-        startedAt
       }
       Reports {
         nextToken
-        startedAt
       }
       NutritionPlan {
         id
@@ -786,15 +662,10 @@ export const deleteClient = /* GraphQL */ `
         end_date
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
+      birthday
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       clientNutritionPlanId
     }
   }
@@ -808,13 +679,23 @@ export const createTrainer = /* GraphQL */ `
       id
       Clients {
         nextToken
-        startedAt
+      }
+      PlatformConfig {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      trainerPlatformConfigId
     }
   }
 `;
@@ -827,13 +708,23 @@ export const updateTrainer = /* GraphQL */ `
       id
       Clients {
         nextToken
-        startedAt
+      }
+      PlatformConfig {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      trainerPlatformConfigId
     }
   }
 `;
@@ -846,13 +737,23 @@ export const deleteTrainer = /* GraphQL */ `
       id
       Clients {
         nextToken
-        startedAt
+      }
+      PlatformConfig {
+        id
+        logo_file
+        favicon_file
+        primary_color
+        secondary_color
+        custom_url
+        personal_web_enabled
+        platform_nutrition_enabled
+        platform_trainer_enabled
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      trainerPlatformConfigId
     }
   }
 `;
@@ -872,9 +773,7 @@ export const createUser = /* GraphQL */ `
         id
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        trainerPlatformConfigId
       }
       Client {
         id
@@ -892,19 +791,21 @@ export const createUser = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
+        birthday
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         clientNutritionPlanId
       }
       sub
+      lifecycle
+      phone
+      address
+      city
+      usstate
+      zip
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userTrainerId
       userClientId
     }
@@ -926,9 +827,7 @@ export const updateUser = /* GraphQL */ `
         id
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        trainerPlatformConfigId
       }
       Client {
         id
@@ -946,19 +845,21 @@ export const updateUser = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
+        birthday
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         clientNutritionPlanId
       }
       sub
+      lifecycle
+      phone
+      address
+      city
+      usstate
+      zip
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userTrainerId
       userClientId
     }
@@ -980,9 +881,7 @@ export const deleteUser = /* GraphQL */ `
         id
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        trainerPlatformConfigId
       }
       Client {
         id
@@ -1000,19 +899,21 @@ export const deleteUser = /* GraphQL */ `
         service_tier
         trainerID
         goalID
+        platformconfigID
+        birthday
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         clientNutritionPlanId
       }
       sub
+      lifecycle
+      phone
+      address
+      city
+      usstate
+      zip
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userTrainerId
       userClientId
     }
@@ -1028,9 +929,6 @@ export const createTodo = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -1045,9 +943,6 @@ export const updateTodo = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -1062,10 +957,76 @@ export const deleteTodo = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
+    }
+  }
+`;
+export const createPlatformConfig = /* GraphQL */ `
+  mutation CreatePlatformConfig(
+    $input: CreatePlatformConfigInput!
+    $condition: ModelPlatformConfigConditionInput
+  ) {
+    createPlatformConfig(input: $input, condition: $condition) {
+      id
+      logo_file
+      favicon_file
+      primary_color
+      secondary_color
+      custom_url
+      personal_web_enabled
+      platform_nutrition_enabled
+      platform_trainer_enabled
+      Clients {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updatePlatformConfig = /* GraphQL */ `
+  mutation UpdatePlatformConfig(
+    $input: UpdatePlatformConfigInput!
+    $condition: ModelPlatformConfigConditionInput
+  ) {
+    updatePlatformConfig(input: $input, condition: $condition) {
+      id
+      logo_file
+      favicon_file
+      primary_color
+      secondary_color
+      custom_url
+      personal_web_enabled
+      platform_nutrition_enabled
+      platform_trainer_enabled
+      Clients {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deletePlatformConfig = /* GraphQL */ `
+  mutation DeletePlatformConfig(
+    $input: DeletePlatformConfigInput!
+    $condition: ModelPlatformConfigConditionInput
+  ) {
+    deletePlatformConfig(input: $input, condition: $condition) {
+      id
+      logo_file
+      favicon_file
+      primary_color
+      secondary_color
+      custom_url
+      personal_web_enabled
+      platform_nutrition_enabled
+      platform_trainer_enabled
+      Clients {
+        nextToken
+      }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -1085,9 +1046,6 @@ export const createReportDailyNutrition = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       dailyNutrition {
         id
@@ -1099,15 +1057,9 @@ export const createReportDailyNutrition = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -1127,9 +1079,6 @@ export const updateReportDailyNutrition = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       dailyNutrition {
         id
@@ -1141,15 +1090,9 @@ export const updateReportDailyNutrition = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -1169,9 +1112,6 @@ export const deleteReportDailyNutrition = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       dailyNutrition {
         id
@@ -1183,15 +1123,9 @@ export const deleteReportDailyNutrition = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -1211,9 +1145,6 @@ export const createReportMeasurement = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       measurement {
         id
@@ -1228,15 +1159,9 @@ export const createReportMeasurement = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -1256,9 +1181,6 @@ export const updateReportMeasurement = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       measurement {
         id
@@ -1273,15 +1195,9 @@ export const updateReportMeasurement = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -1301,9 +1217,6 @@ export const deleteReportMeasurement = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       measurement {
         id
@@ -1318,15 +1231,9 @@ export const deleteReportMeasurement = /* GraphQL */ `
         clientID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;

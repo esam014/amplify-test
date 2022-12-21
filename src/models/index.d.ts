@@ -18,6 +18,14 @@ export enum Role {
   CLIENT = "CLIENT"
 }
 
+export enum Lifecycle {
+  FIRSTLOGIN = "FIRSTLOGIN",
+  REGISTERING = "REGISTERING",
+  REGISTERED = "REGISTERED",
+  ACTIVE = "ACTIVE",
+  SUSPENDED = "SUSPENDED"
+}
+
 type ReportMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -59,6 +67,10 @@ type NutritionPlanMetaData = {
 }
 
 type TrainerMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type PlatformConfigMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
@@ -324,6 +336,7 @@ type EagerClient = {
   readonly service_tier?: ServiceTier | keyof typeof ServiceTier | null;
   readonly trainerID: string;
   readonly goalID: string;
+  readonly platformconfigID: string;
   readonly Schedules?: (Schedule | null)[] | null;
   readonly DailyNutritions?: (DailyNutrition | null)[] | null;
   readonly Measurements?: (Measurement | null)[] | null;
@@ -350,6 +363,7 @@ type LazyClient = {
   readonly service_tier?: ServiceTier | keyof typeof ServiceTier | null;
   readonly trainerID: string;
   readonly goalID: string;
+  readonly platformconfigID: string;
   readonly Schedules: AsyncCollection<Schedule>;
   readonly DailyNutritions: AsyncCollection<DailyNutrition>;
   readonly Measurements: AsyncCollection<Measurement>;
@@ -397,21 +411,61 @@ export declare const NutritionPlan: (new (init: ModelInit<NutritionPlan, Nutriti
 type EagerTrainer = {
   readonly id: string;
   readonly Clients?: (Client | null)[] | null;
+  readonly PlatformConfig?: PlatformConfig | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
+  readonly trainerPlatformConfigId?: string | null;
 }
 
 type LazyTrainer = {
   readonly id: string;
   readonly Clients: AsyncCollection<Client>;
+  readonly PlatformConfig: AsyncItem<PlatformConfig | undefined>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
+  readonly trainerPlatformConfigId?: string | null;
 }
 
 export declare type Trainer = LazyLoading extends LazyLoadingDisabled ? EagerTrainer : LazyTrainer
 
 export declare const Trainer: (new (init: ModelInit<Trainer, TrainerMetaData>) => Trainer) & {
   copyOf(source: Trainer, mutator: (draft: MutableModel<Trainer, TrainerMetaData>) => MutableModel<Trainer, TrainerMetaData> | void): Trainer;
+}
+
+type EagerPlatformConfig = {
+  readonly id: string;
+  readonly logo_file?: string | null;
+  readonly favicon_file?: string | null;
+  readonly primary_color?: string | null;
+  readonly secondary_color?: string | null;
+  readonly custom_url?: string | null;
+  readonly personal_web_enabled?: boolean | null;
+  readonly platform_nutrition_enabled?: boolean | null;
+  readonly platform_trainer_enabled?: boolean | null;
+  readonly Clients?: (Client | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyPlatformConfig = {
+  readonly id: string;
+  readonly logo_file?: string | null;
+  readonly favicon_file?: string | null;
+  readonly primary_color?: string | null;
+  readonly secondary_color?: string | null;
+  readonly custom_url?: string | null;
+  readonly personal_web_enabled?: boolean | null;
+  readonly platform_nutrition_enabled?: boolean | null;
+  readonly platform_trainer_enabled?: boolean | null;
+  readonly Clients: AsyncCollection<Client>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type PlatformConfig = LazyLoading extends LazyLoadingDisabled ? EagerPlatformConfig : LazyPlatformConfig
+
+export declare const PlatformConfig: (new (init: ModelInit<PlatformConfig, PlatformConfigMetaData>) => PlatformConfig) & {
+  copyOf(source: PlatformConfig, mutator: (draft: MutableModel<PlatformConfig, PlatformConfigMetaData>) => MutableModel<PlatformConfig, PlatformConfigMetaData> | void): PlatformConfig;
 }
 
 type EagerUser = {
@@ -423,7 +477,13 @@ type EagerUser = {
   readonly email?: string | null;
   readonly Trainer?: Trainer | null;
   readonly Client?: Client | null;
-  readonly sub?: string | null;
+  readonly sub: string;
+  readonly lifecycle?: Lifecycle | keyof typeof Lifecycle | null;
+  readonly phone?: string | null;
+  readonly address?: string | null;
+  readonly city?: string | null;
+  readonly usstate?: string | null;
+  readonly zip?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly userTrainerId?: string | null;
@@ -439,7 +499,13 @@ type LazyUser = {
   readonly email?: string | null;
   readonly Trainer: AsyncItem<Trainer | undefined>;
   readonly Client: AsyncItem<Client | undefined>;
-  readonly sub?: string | null;
+  readonly sub: string;
+  readonly lifecycle?: Lifecycle | keyof typeof Lifecycle | null;
+  readonly phone?: string | null;
+  readonly address?: string | null;
+  readonly city?: string | null;
+  readonly usstate?: string | null;
+  readonly zip?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly userTrainerId?: string | null;

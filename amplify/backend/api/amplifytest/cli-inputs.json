@@ -17,10 +17,6 @@
         "cognitoUserPoolId": "authamplifytest"
       }
     ],
-    "conflictResolution": {
-      "defaultResolutionStrategy": {
-        "type": "AUTOMERGE"
-      }
-    }
+    "conflictResolution": {}
   }
 }

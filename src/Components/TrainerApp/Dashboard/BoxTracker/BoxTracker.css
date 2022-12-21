@@ -1,0 +1,10 @@
+.BoxTracker {
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+}
+
+.Type {
+    background-color: gray;
+}
