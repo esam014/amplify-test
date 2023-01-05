@@ -1,5 +1,8 @@
 import React from "react";
 import TrainerHomePage from "./Dashboard/TrainerHomePage";
+import TrainerClientPage from "./Clients/TrainerClientPage";
+import TrainerSchedulePage from "./Schedule/TrainerSchedulePage";
+import TrainerAccountPage from "./Account/TrainerAccountPage";
 
 function TrainerPageList() {
     const TrainerPageList = [
@@ -11,19 +14,19 @@ function TrainerPageList() {
         },
         {
             Title: "Clients",
-            Component: <TrainerHomePage />,
+            Component: <TrainerClientPage />,
             path: '/Clients',
             key: "TrainerClientPage"
         },
         {
             Title: "Schedule",
-            Component: <TrainerHomePage />,
+            Component: <TrainerSchedulePage />,
             path: '/Schedule',
             key: "TrainerSchedulePage"
         },
         {
             Title: "Account",
-            Component: <TrainerHomePage />,
+            Component: <TrainerAccountPage />,
             path: '/Account',
             key: "TrainerAccountPage"
         }
