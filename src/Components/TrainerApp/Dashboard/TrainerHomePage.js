@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Table, Col, Stack, Container } from "react-bootstrap";
+import TrainerChart from "./TrainerChart";
 
 function TrainerHomePage() {
     //State Stuff here
@@ -13,6 +14,7 @@ function TrainerHomePage() {
     return (
         <div>
             <h1>Home Page</h1>
+            <TrainerChart/>
             <Stack direction="horizontal" >
                 <Col>
                     <Container>
