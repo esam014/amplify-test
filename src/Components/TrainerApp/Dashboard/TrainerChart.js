@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
-import '../../../../node_modules/react-vis/style.css';
-import { RadialChart } from 'react-vis';
+import { VictoryPie, VictoryLabel } from 'victory';
 
 class TrainerChart extends Component {
 
     constructor(props) {
         super(props)
-        const myData = [{ angle: 1 }, { angle: 5 }, { angle: 2 }]
+        const myData = [{ x: "Issues", y: 1 }, { x: "Attention", y: 5 }, { x: "Good", y: 2 }]
         this.state = { myData }
     }
 
     render() {
         return (
             < React.Fragment >
-                <RadialChart
+                <VictoryPie
+                    colorScale={["red", "yellow", "green"]}
                     data={this.state.myData}
-                    width={300}
-                    height={300} />
+                    height={150}
+                    innerRadius={20}
+                    startAngle={-90}
+                    endAngle={90}
+                    labelPosition={({ index }) => index ? 'centroid' : "startAngle"}
+                    labelPlacement={({ index }) => index ? "parallel" : "vertical"}
+                    labels={({ datum }) => datum.x}
+                />
             </React.Fragment >
 
         )

@@ -20,7 +20,8 @@
     "react-loader-spinner": "^5.3.4",
     "react-router-bootstrap": "^0.26.2",
     "react-scripts": "^5.0.1",
-    "ui-react": "^1.0.3"
+    "ui-react": "^1.0.3",
+    "victory": "^36.6.8"
   },
   "scripts": {
     "start": "react-scripts start",
