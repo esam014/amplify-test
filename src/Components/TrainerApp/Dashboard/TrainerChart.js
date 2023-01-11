@@ -5,7 +5,7 @@ class TrainerChart extends Component {
 
     constructor(props) {
         super(props)
-        const myData = [{ x: "Issues", y: 1 }, { x: "Attention", y: 5 }, { x: "Good", y: 2 }]
+        const myData = [{ x: 1, y: 2, }, { x: 2, y: 5 }, { x: 3, y: 2 }]
         this.state = { myData }
     }
 
@@ -19,9 +19,10 @@ class TrainerChart extends Component {
                     innerRadius={20}
                     startAngle={-90}
                     endAngle={90}
-                    labelPosition={({ index }) => index ? 'centroid' : "startAngle"}
-                    labelPlacement={({ index }) => index ? "parallel" : "vertical"}
-                    labels={({ datum }) => datum.x}
+                    labels={({ datum }) => `${datum.y}`}
+                    labelRadius={({ datum }) => 30}
+                    labelComponent={<VictoryLabel style={ {fontSize: 5 } } />}
+                    animate={true}
                 />
             </React.Fragment >
 
