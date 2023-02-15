@@ -1,28 +1,28 @@
 export type AmplifyDependentResourcesAttributes = {
-    "auth": {
-        "amplifytest": {
-            "IdentityPoolId": "string",
-            "IdentityPoolName": "string",
-            "UserPoolId": "string",
-            "UserPoolArn": "string",
-            "UserPoolName": "string",
-            "AppClientIDWeb": "string",
-            "AppClientID": "string"
-        }
-    },
-    "hosting": {
-        "S3AndCloudFront": {
-            "Region": "string",
-            "HostingBucketName": "string",
-            "WebsiteURL": "string",
-            "S3BucketSecureURL": "string"
-        }
-    },
-    "api": {
-        "amplifytest": {
-            "GraphQLAPIKeyOutput": "string",
-            "GraphQLAPIIdOutput": "string",
-            "GraphQLAPIEndpointOutput": "string"
-        }
+  "api": {
+    "amplifytest": {
+      "GraphQLAPIEndpointOutput": "string",
+      "GraphQLAPIIdOutput": "string",
+      "GraphQLAPIKeyOutput": "string"
     }
+  },
+  "auth": {
+    "amplifytest": {
+      "AppClientID": "string",
+      "AppClientIDWeb": "string",
+      "IdentityPoolId": "string",
+      "IdentityPoolName": "string",
+      "UserPoolArn": "string",
+      "UserPoolId": "string",
+      "UserPoolName": "string"
+    }
+  },
+  "hosting": {
+    "S3AndCloudFront": {
+      "HostingBucketName": "string",
+      "Region": "string",
+      "S3BucketSecureURL": "string",
+      "WebsiteURL": "string"
+    }
+  }
 }

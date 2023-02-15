@@ -18,12 +18,12 @@ class TrainerHomePage extends Component {
     retrieveUser = async () => {
         const info = await Auth.currentUserInfo();
         var userObj = (await API.graphql(graphqlOperation(getUser, { id: info.username }))).data.getUser;
-        var clients = (await API.graphql(graphqlOperation(listClients, { filter: { trainerID: {eq: userObj.userTrainerId }}}))).data.listClients.items;
+        var clients = (await API.graphql(graphqlOperation(listClients, { filter: { trainerID: { eq: userObj.userTrainerId } } }))).data.listClients.items;
         console.info("User object is: ", clients)
         this.setState({ user: userObj, clientList: clients });
         console.info(this.state)
     }
-    
+
     clientCreated(provider, value) {
         console.log({ provider, value })
     }
@@ -54,13 +54,10 @@ class TrainerHomePage extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.state.clientList().map((client) => {
-                                        return (
-                                            <tr>
-                                                <td></td>
-                                            </tr>
-                                        )
-                                    })}
+                                    <tr>
+                                        <td>Some</td>
+                                        <td>Person</td>
+                                    </tr>
                                 </tbody>
                             </Table>
                         </Container>
@@ -75,7 +72,8 @@ class TrainerHomePage extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    <td>Another</td>
+                                    <td>Person</td>
                                 </tbody>
                             </Table>
                         </Container>
@@ -90,7 +88,8 @@ class TrainerHomePage extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    <td>Someone</td>
+                                    <td>Good</td>
                                 </tbody>
                             </Table>
                         </Container>

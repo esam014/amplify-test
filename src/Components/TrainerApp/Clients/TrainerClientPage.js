@@ -1,10 +1,12 @@
 import React from "react";
+import ClientListNav from "./ClientListNav";
+import ClientWorkspace from "./ClientWorkspace";
 
-function TrainerClientPage ()
-{
+function TrainerClientPage() {
     return (
         <div>
-            <h1>Client Page</h1>
+            <ClientListNav/>
+            <ClientWorkspace/>
         </div>
     )
 }
